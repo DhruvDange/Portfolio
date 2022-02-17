@@ -1,0 +1,130 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding: 0;
+  margin: 0;
+  height: 400vh;
+  font-family: "Lato", sans-serif;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.webgl {
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  top: 0;
+  right: 0;
+  outline: none;
+}
+
+.Footer {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  transform: rotate(-90deg) translateX(100%);
+  transform-origin: bottom right;
+  font-size: 14px;
+}
+
+.Footer li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.Footer a {
+  color: white;
+  opacity: 0.6;
+  text-decoration: none;
+  transition: opacity 0.5s;
+}
+
+.Footer a:hover {
+  opacity: 1;
+}
+.Footer a:last-child {
+  margin-right: 0;
+}
+
+@media (max-height: 500px), screen and (max-width: 767px) {
+  .Footer {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    transform: none;
+    width: calc(100% - 40px);
+    margin: 0 auto;
+    padding-bottom: 50px;
+    font-size: 16px;
+  }
+  .Footer li {
+    display: block;
+    margin-right: 40px;
+  }
+  .Footer a {
+    opacity: 1;
+    position: relative;
+    font-weight: 600;
+    line-height: 35px;
+  }
+  .Footer a:after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: calc(100% + 10px);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 7px;
+    height: 7px;
+    border-radius: 7px;
+  }
+}
+
+.Menu {
+  position: fixed;
+  right: 30px;
+  top: 10px;
+  z-index: 10;
+  text-align: right;
+  transform-origin: bottom right;
+  transform: rotate(-90deg) translateX(28px);
+}
+
+.Menu-invisible {
+  display: none;
+}
+.Menu nav {
+  margin-top: 10px;
+  font-size: 18px;
+}
+.Menu nav a {
+    color: white;
+  margin-left: 20px;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.5s;
+}
+.Menu nav a.selected,
+.Menu nav a:hover {
+  opacity: 1;
+}
+.Menu nav a:first-child {
+  margin-left: 0;
+}
+@media (max-height: 600px), screen and (max-width: 767px) {
+  .Menu {
+    display: none;
+  }
+}
