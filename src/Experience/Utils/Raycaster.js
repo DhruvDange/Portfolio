@@ -59,8 +59,8 @@ export default class Raycaster extends EventEmitter
                 this.mouse.x = ((_event.changedTouches[0].clientX / this.sizes.width)) * 2 - 1;
     
             })
-            // this.camera.instance.fov = 50
-            // this.camera.instance.updateProjectionMatrix();
+            this.camera.instance.fov = 60
+            this.camera.instance.updateProjectionMatrix();
         }
         
         this.trigger('mousemove')

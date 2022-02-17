@@ -113,7 +113,7 @@ body {
   display: inline-block;
   text-decoration: none;
   cursor: pointer;
-  opacity: 0.5;
+  opacity: 0.7;
   transition: opacity 0.5s;
 }
 .Menu nav a.selected,
@@ -124,7 +124,12 @@ body {
   margin-left: 0;
 }
 @media (max-height: 600px), screen and (max-width: 767px) {
-  .Menu {
-    display: none;
+
+    .Menu {
+        right: 10px;
+    }
+
+    .Menu nav {
+        font-size: 2.5vh;
   }
 }
