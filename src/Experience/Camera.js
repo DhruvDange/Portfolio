@@ -53,7 +53,7 @@ export default class Camera
         this.docHeight = document.body.offsetHeight
         this.windowHeight = this.sizes.height
         this.scrollPercent = this.scrollY / (this.docHeight - this.windowHeight) * 100
-        this.scrollPercent = this.scrollPercent.toFixed(2)
+        this.scrollPercent = this.scrollPercent.toFixed(4)
         //this.scrollPercent = Math.round(this.scrollPercent * 100) / 100
         this.setCameraPosition()
     }
