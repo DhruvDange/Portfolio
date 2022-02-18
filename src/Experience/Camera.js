@@ -67,13 +67,13 @@ export default class Camera
     update()
     {
         if(window.location.hash === "#about"){
-            gsap.to(window, { duration: 0.8, ease: "power1", scrollTo: this.sizes.height * 0 });
+            gsap.to(window, { duration: 1.5, ease: "power1", scrollTo: this.sizes.height * 0 });
         }
         if(window.location.hash === "#skills"){
-            gsap.to(window, { duration: 0.8, ease: "power1", scrollTo: this.sizes.height * 0.8 });
+            gsap.to(window, { duration: 1.5, ease: "power1", scrollTo: this.sizes.height * 0.8 });
         }
         if(window.location.hash === "#works"){
-            gsap.to(window, { duration: 0.8, ease: "power1", scrollTo: this.sizes.height * 2.1 });
+            gsap.to(window, { duration: 1.5, ease: "power1", scrollTo: this.sizes.height * 2.2 });
         }
 
         // this.controls.update()
