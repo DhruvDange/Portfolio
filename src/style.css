@@ -14,8 +14,29 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+audio{
+    padding-top: 2vh;
+    display: inline-block;
+}
+
+
+audio::-webkit-media-controls-panel {
+    background-color: #9fffcb;
+}
+
+audio::-webkit-media-controls-volume-slider {
+background-color: #25a18e;
+border-radius: 25px;
+padding-left: 8px;
+padding-right: 8px;
+}
+
 ::-webkit-scrollbar {
   display: none;
+}
+
+.center{
+    text-align: center;
 }
 
 .webgl {
@@ -26,6 +47,87 @@ body {
   top: 0;
   right: 0;
   outline: none;
+}
+
+
+.musicModal {
+    width: 30vw;
+    height: 70vh;
+    min-width: 400px;
+    
+    /* Center Align */
+    position: fixed;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    padding: 2%;
+    margin: auto;
+
+    /* Styling */
+    border-radius: 3%;
+    background-color: #004e64;
+    opacity: 0.98;
+
+    font-size: 14px;
+    display: none;
+}
+
+@media only screen and (max-width: 500px) {
+
+    .test {
+        width: 70vw;
+        min-width: 100px;
+    }
+
+}
+.track{
+    width: 100%;
+    padding-top: 1vh;
+}
+
+.musicHeading {
+    position: relative;
+    text-align: center;
+    color: #7ae582;
+    padding-bottom: 2vh;
+}
+.ib{
+    display: inline-block;
+    padding: 0px;
+    margin: 0px;
+    vertical-align: top;
+
+}
+
+.play {
+    display: inline-block;
+}
+
+
+
+.coverImg{
+    height: 10vh;
+    float: left;
+    background: #555;
+}
+
+.trackName{
+    padding: 0vh 2vh;
+    color: #9fffcb;
+    display: inline-block;
+}
+
+.compName{
+    height: 5vh;
+    padding: 1vh 2vh;
+    color: #9fffcb;
+    display: block;
+}
+
+button {
+    display: block;
 }
 
 .Footer {
@@ -133,3 +235,46 @@ body {
         font-size: 2.5vh;
   }
 }
+
+
+/* CSS */
+.button-8 {
+    background-color: #e1ecf4;
+    border-radius: 3px;
+    border: 1px solid #7aa7c7;
+    box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
+    box-sizing: border-box;
+    color: #39739d;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.15385;
+    margin: 0.5vh;
+    outline: none;
+    padding: 1vh .8em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    white-space: nowrap;
+  }
+  
+  .button-8:hover,
+  .button-8:focus {
+    background-color: #b3d3ea;
+    color: #2c5777;
+  }
+  
+  .button-8:focus {
+    box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+  }
+  
+  .button-8:active {
+    background-color: #a0c7e4;
+    box-shadow: none;
+    color: #2c5777;
+  }

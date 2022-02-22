@@ -1,7 +1,7 @@
 import * as THREE from "three"
 import Experience from "../Experience";
 import EventEmitter from "./EventEmitter";
-import gsap from "gsap";
+
 
 export default class Raycaster extends EventEmitter
 {
@@ -16,6 +16,7 @@ export default class Raycaster extends EventEmitter
         this.scene = this.experience.scene
         this.sizes = this.experience.sizes
         this.camera = this.experience.camera
+        this.resources = this.experience.resources.items
         this.showing = -1
 
         // Setup
@@ -23,15 +24,23 @@ export default class Raycaster extends EventEmitter
         this.objectsToIntersect = objectsToIntersect
         this.lightSwitch = this.objectsToIntersect[2] // to flip the switch
         this.switchOn = false // initially off
+        this.exposure = 1
+        this.musicShowing = false
+
 
         // dark color for room
         this.colorHex = 0x1a2c3c 
         this.postitColor = 0xd4b0f9
         this.textColor = 0x2c2a4a
 
-        this.setEvent()
+        this.setSounds()
         this.setInstance()
+        this.setEvent()
+    }
 
+    setSounds()
+    {
+        this.clickSound = this.resources.clickSound
     }
 
     setInstance()
@@ -69,30 +78,33 @@ export default class Raycaster extends EventEmitter
     // function to change opacity of objects on hoover
     hoverObjects()
     {
-        const switchIntersect =
+        if(!this.musicShowing)
+        {
+            const switchIntersect =
             this.currentIntersect.object.name === "switchPlate" ||
             this.currentIntersect.object.name === "switch";
 
-        if (this.currentIntersect.object.name === "can")
-        {
-            this.currentIntersect.object.material.opacity = 0.8;
-        } 
-        else if (this.currentIntersect.object.name === "headphones")
-        {
-            this.currentIntersect.object.material.opacity = 0.8;
-        }
-        else if (switchIntersect)
-        {
-            this.currentIntersect.object.material.opacity = 0.8;
-            this.lightSwitch.material.opacity = 0.8
+            if (this.currentIntersect.object.name === "can")
+            {
+                this.currentIntersect.object.material.opacity = 0.8;
+            } 
+            else if (this.currentIntersect.object.name === "headphones")
+            {
+                this.currentIntersect.object.material.opacity = 0.8;
+            }
+            else if (switchIntersect)
+            {
+                this.currentIntersect.object.material.opacity = 0.8;
+                this.lightSwitch.material.opacity = 0.8
+            }
         }
     }
 
     // function to switch room color on switch click and change screen
     clickObjects()
     {
-
-        if(this.currentIntersect)
+     
+        if(this.currentIntersect && !this.musicShowing)
         {
             const switchIntersect =
             this.currentIntersect.object.name === "switchPlate" ||
@@ -100,10 +112,15 @@ export default class Raycaster extends EventEmitter
 
             if(switchIntersect)
             {
+                this.clickSound.volume = 0.5
+                this.clickSound.currentTime = 0
+                this.clickSound.play()
+
                 if(this.switchOn) // To make it off i.e navy blue
                 {
+                    this.exposure = 1.0
                     this.lightSwitch.rotation.z -= 0.7
-                    this.renderer.webGLRenderer.toneMappingExposure = 1.0
+                    this.renderer.webGLRenderer.toneMappingExposure = this.exposure
                     this.arrowHex = 0x52b788
                     this.colorHex = 0x1a2c3c
                     this.postitColor = 0xe5b8ff
@@ -113,8 +130,9 @@ export default class Raycaster extends EventEmitter
                 }
                 else // Make switch on i.e. Light color
                 {
+                    this.exposure = 0.8
                     this.lightSwitch.rotation.z += 0.7
-                    this.renderer.webGLRenderer.toneMappingExposure = 0.8
+                    this.renderer.webGLRenderer.toneMappingExposure = this.exposure
                     this.arrowHex = 0x01497c
                     this.colorHex = 0xd6e9f5
                     this.postitColor = 0xffb703
@@ -131,6 +149,19 @@ export default class Raycaster extends EventEmitter
             else if(this.currentIntersect.object.name === 'arrow2')
             {
                 this.room.nextScreen()
+            }
+            else if(this.currentIntersect.object.name === 'headphones')
+            {
+                if(!this.musicShowing)
+                {
+                    document.querySelector(".musicModal").style.display = 'block';
+                    this.musicShowing = true
+                }
+                else
+                {
+                    document.querySelector(".musicModal").style.display = 'none';
+                    this.musicShowing = false
+                }
             }
             else
             {
@@ -152,7 +183,9 @@ export default class Raycaster extends EventEmitter
 
         // Get Intersects from raycaster
         this.currentIntersect = this.instance.intersectObjects(this.objectsToIntersect)[0]
-        
+
+        this.musicShowing = document.querySelector(".musicModal").style.display === 'block'
+
         // Check for intersects
         if(this.currentIntersect)
         {

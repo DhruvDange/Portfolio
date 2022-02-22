@@ -27,6 +27,12 @@ export default class Resources extends EventEmitter
 
         this.setLoaders()
         this.startLoading()
+        this.setAudio()
+    }
+
+    setAudio()
+    {
+        this.items['clickSound'] = new Audio('audio/click.mp3')
     }
 
     setLoaders()

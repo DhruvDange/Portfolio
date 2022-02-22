@@ -11,6 +11,7 @@ import emissionVertexShader from "../../shaders/emission/vertex.glsl";
 import glassFragmentShader from "../../shaders/glass/fragment.glsl"
 import arrowFragmentShader from "../../shaders/arrow/fragment.glsl";
 import arrowVertexShader from "../../shaders/arrow/vertex.glsl";
+import { BooleanKeyframeTrack } from "three";
 
 
 export default class Room
@@ -125,6 +126,7 @@ export default class Room
         // Nanoleaf
         this.nanoLeafMesh.material = new THREE.ShaderMaterial({
             uniforms: {
+                uAlpha: { value: 1 },
                 uTime: { value: 0 },
                 uColorStart: { value: new THREE.Color("#e0aaff") },
                 uColorEnd: { value: new THREE.Color("#0077b6") },
@@ -136,12 +138,14 @@ export default class Room
         // all other emissions
         this.emissionMaterial = new THREE.ShaderMaterial({
             uniforms: {
+                uAlpha: { value: 1 },
                 uTime: { value: 0 },
                 uColorStart: { value: new THREE.Color("#90e0ef") },
                 uColorEnd: { value: new THREE.Color("#0077b6") },
             },
             fragmentShader: emissionFragmentShader,
             vertexShader: emissionVertexShader,
+            
         })
 
         // arrow and text for projects part
