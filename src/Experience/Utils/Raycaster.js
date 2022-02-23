@@ -197,7 +197,7 @@ export default class Raycaster extends EventEmitter
 
     update(objectsToIntersect)
     {   
-        if(this.getStyle('canModal', 'display') && this.getStyle('musicModal', 'display')){
+        if(this.getStyle('canModal', 'display') === 'none' && this.getStyle('musicModal', 'display') === 'none'){
             this.modalShowing = false
         }
 
