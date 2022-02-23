@@ -50,7 +50,7 @@ padding-right: 8px;
 }
 
 
-.musicModal {
+.Modal {
     width: 30vw;
     height: 70vh;
     min-width: 400px;
@@ -88,12 +88,33 @@ padding-right: 8px;
     padding-top: 1vh;
 }
 
-.musicHeading {
+.modalHeading {
     position: relative;
     text-align: center;
     color: #7ae582;
     padding-bottom: 2vh;
 }
+
+.modalSub-Heading {
+    position: relative;
+    text-align: center;
+    color: #7ae582;
+    padding-bottom: 2vh;
+}
+
+.modalSub-Heading2 {
+    position: relative;
+    text-align: center;
+    color: #affc41;
+    padding-top: 2vh;
+    padding-bottom:  1vh;
+    font-weight: 1200;
+}   
+
+.low{
+    padding-top: 5vh;
+}
+
 .ib{
     display: inline-block;
     padding: 0px;

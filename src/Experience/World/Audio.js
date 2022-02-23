@@ -23,10 +23,12 @@ export default class AudioExperience
         this.retroFunky = document.querySelector("#retroFunky")
         this.letsStart = document.querySelector("#letsStart")
 
-        this.remove = document.querySelector(".remove")
-        this.hide = document.querySelector(".hide")
+        this.remove = document.querySelector("#remove-music")
+        this.hide = document.querySelector("#hide-music")
+        
+        this.hideCan = document.querySelector("#hide-can")
 
-        this.musicModal = document.querySelector(".musicModal")
+        this.musicModal = document.querySelector("#musicModal")
 
         this.audio = document.querySelector(".player")
         this.audio.volume = 0.2
@@ -64,6 +66,10 @@ export default class AudioExperience
 
         this.hide.addEventListener('click', ()=> {
             this.musicModal.style.display = 'none';
+        })
+
+        this.hideCan.addEventListener('click', ()=> {
+            document.querySelector('#canModal').style.display = 'none';
         })
 
         this.remove.addEventListener('click', ()=> {

@@ -36,8 +36,8 @@
         </nav>
     </div>
 
-    <div class="musicModal">
-        <h1 class="musicHeading"> Select a track to play</h1>
+    <div id="musicModal" class="Modal">
+        <h1 class="modalHeading"> Select a track to play</h1>
         <div class="center">
             <audio controls class="player "></audio>
         </div>
@@ -87,9 +87,36 @@
         </div>
 
         <div class="center">
-            <button class="remove button-8">Stop Music</button>
+            <button id="remove-music" class="remove button-8">Stop Music</button>
         
-            <button class="hide button-8">Hide Popup</button>
+            <button id="hide-music" class="hide button-8">Hide Popup</button>
+        </div>
+
+    
+    </div>
+
+    <!-- Can Click -->
+
+    <div id="canModal" class="Modal">
+        <h1 class="modalHeading">Buy me a Drink!</h1>
+        <h3 class="modalSub-Heading">Staying up late coding is amazing! A can of my favourite
+            drink makes it just so much better.
+        </h3>
+        <h3 class="modalSub-Heading">Support me buy buying me a drink!</h3>
+        <div class="center">
+
+            <h3 class="modalSub-Heading2">Coke &#128420 INR 40</h3>
+            <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_IzX3ru7hbTFDhn" async> </script> </form>
+            <h3 class="modalSub-Heading2">RedBull &#128153 INR 110</h3>
+            <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_IzX6lyeZN4Lrnr" async> </script> </form>
+            <h3 class="modalSub-Heading2">Lychee Fanta &#128156 INR 120</h3>
+            <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_IzXAbb9q1EDtpb" async> </script> </form>
+            <h3 class="modalSub-Heading2">All &#11088 INR 270</h3>
+            <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_IzWwhwSptXrlu6" async> </script> </form>
+        </div>
+    
+        <div class="center low">
+            <button id='hide-can' class="hide button-8">Hide Popup</button>
         </div>
 
     

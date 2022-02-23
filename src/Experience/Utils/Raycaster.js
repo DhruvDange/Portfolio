@@ -25,7 +25,7 @@ export default class Raycaster extends EventEmitter
         this.lightSwitch = this.objectsToIntersect[2] // to flip the switch
         this.switchOn = false // initially off
         this.exposure = 1
-        this.musicModal = document.querySelector(".musicModal")
+        this.musicModal = document.querySelector("#musicModal")
         this.musicShowing = false
 
 
@@ -163,6 +163,10 @@ export default class Raycaster extends EventEmitter
                     this.musicModal.style.display = 'none';
                     this.musicShowing = false
                 }
+            }
+            else if(this.currentIntersect.object.name === 'can')
+            {
+                document.querySelector('#canModal').style.display = 'block';
             }
             else
             {
