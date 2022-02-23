@@ -30,7 +30,7 @@ export default class AudioExperience
         this.musicModal = document.querySelector(".musicModal")
 
         this.audio = document.querySelector(".player")
-        this.audio.volume = 0.5
+        this.audio.volume = 0.2
     }
 
     setButtonEvent()

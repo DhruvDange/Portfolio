@@ -72,6 +72,7 @@ padding-right: 8px;
 
     font-size: 14px;
     display: none;
+    overflow-y: scroll;
 }
 
 @media only screen and (max-width: 500px) {
