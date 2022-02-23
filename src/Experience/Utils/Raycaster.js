@@ -220,7 +220,7 @@ export default class Raycaster extends EventEmitter
             // Reset items after hover
             for(const item in this.objectsToIntersect)
             {
-                this.objectsToIntersect[item].material.opacity = 1;
+                this.objectsToIntersect[item].material.opacity = 0.95;
                 this.lightSwitch.material.opacity = 0.95
             }
         }
