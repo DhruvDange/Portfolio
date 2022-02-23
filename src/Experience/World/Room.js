@@ -248,6 +248,12 @@ export default class Room
         this.blade2.rotation.z = this.time.elapsed * 0.001 * 2
         this.blade3.rotation.z = this.time.elapsed * 0.001 * 2
         this.blade4.rotation.z = this.time.elapsed * 0.001 * 2
+
+        //pulse objects
+        // if(this.time.elapsed % 900 === 0){
+        //     console.log("test");
+        // }
+
     }
 
     /**
