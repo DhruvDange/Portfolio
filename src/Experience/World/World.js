@@ -26,7 +26,7 @@ export default class World
             this.raycaster = new Raycaster(this.objectsToIntersect)
             this.loading.setAplha()
             this.screen = new Screen()
-            this.audioExperience = new AudioExperience
+            this.audioExperience = new AudioExperience()
 
             this.setEvent()
         })

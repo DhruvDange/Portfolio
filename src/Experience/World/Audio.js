@@ -7,7 +7,6 @@ export default class AudioExperience
     {
         this.experience = new Experience
 
-
         this.uAlpha = 1
         this.isPlaying = false
         this.context = null
@@ -64,11 +63,13 @@ export default class AudioExperience
         })
 
         this.hide.addEventListener('click', ()=> {
-            this.musicModal.style.display = 'none'; 
+            this.musicModal.style.display = 'none';
         })
 
         this.remove.addEventListener('click', ()=> {
-            this.musicModal.remove()
+            this.musicModal.style.display = 'none'
+            this.audio.pause()
+            this.audio.currentTime = 0
         })
     }
 

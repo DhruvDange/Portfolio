@@ -25,6 +25,7 @@ export default class Raycaster extends EventEmitter
         this.lightSwitch = this.objectsToIntersect[2] // to flip the switch
         this.switchOn = false // initially off
         this.exposure = 1
+        this.musicModal = document.querySelector(".musicModal")
         this.musicShowing = false
 
 
@@ -154,12 +155,12 @@ export default class Raycaster extends EventEmitter
             {
                 if(!this.musicShowing)
                 {
-                    document.querySelector(".musicModal").style.display = 'block';
+                    this.musicModal.style.display = 'block';
                     this.musicShowing = true
                 }
                 else
                 {
-                    document.querySelector(".musicModal").style.display = 'none';
+                    this.musicModal.style.display = 'none';
                     this.musicShowing = false
                 }
             }
@@ -176,6 +177,10 @@ export default class Raycaster extends EventEmitter
 
     update(objectsToIntersect)
     {   
+        if(this.musicModal.style.display === 'none'){
+            this.musicShowing = false
+        }
+
         // update objectsToIntersect based on items from room. Arrow and pages are added dynamically
         this.objectsToIntersect = objectsToIntersect
 
@@ -184,7 +189,6 @@ export default class Raycaster extends EventEmitter
         // Get Intersects from raycaster
         this.currentIntersect = this.instance.intersectObjects(this.objectsToIntersect)[0]
 
-        this.musicShowing = document.querySelector(".musicModal").style.display === 'block'
 
         // Check for intersects
         if(this.currentIntersect)
