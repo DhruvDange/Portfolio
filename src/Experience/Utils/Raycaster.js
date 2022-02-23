@@ -1,6 +1,7 @@
 import * as THREE from "three"
 import Experience from "../Experience";
 import EventEmitter from "./EventEmitter";
+import gsap from 'gsap'
 
 
 export default class Raycaster extends EventEmitter
@@ -28,6 +29,7 @@ export default class Raycaster extends EventEmitter
         this.musicModal = document.querySelector(".musicModal")
         this.canModal = document.querySelector(".canModal")
         this.modalShowing = false
+        this.opacity = 1
 
 
         // dark color for room
@@ -94,16 +96,20 @@ export default class Raycaster extends EventEmitter
 
             if (this.currentIntersect.object.name === "can")
             {
-                this.currentIntersect.object.material.opacity = 0.8;
+                gsap.to(this.currentIntersect.object.material, {duration: 0.6, opacity: 0.85})
+                gsap.to(this.currentIntersect.object.material, {delay:0.55, duration: 0.4, opacity: 1})
             } 
             else if (this.currentIntersect.object.name === "headphones")
             {
-                this.currentIntersect.object.material.opacity = 0.8;
+                gsap.to(this.currentIntersect.object.material, {duration: 0.6, opacity: 0.85})
+                gsap.to(this.currentIntersect.object.material, {delay:0.55, duration: 0.4, opacity: 1})
             }
             else if (switchIntersect)
             {
-                this.currentIntersect.object.material.opacity = 0.8;
-                this.lightSwitch.material.opacity = 0.8
+                gsap.to(this.currentIntersect.object.material, {duration: 1, opacity: 0.85})
+                gsap.to(this.currentIntersect.object.material, {delay:0.55, duration: 0.4, opacity: 1})
+                gsap.to(this.lightSwitch.material, {duration: 0.6, opacity: 0.85})
+                gsap.to(this.lightSwitch.material, {delay:0.55, duration: 0.4, opacity: 1})
             }
         }
     }
@@ -209,20 +215,20 @@ export default class Raycaster extends EventEmitter
         // Get Intersects from raycaster
         this.currentIntersect = this.instance.intersectObjects(this.objectsToIntersect)[0]
 
+        if(this.time.elapsed % 1200 === 0)
+        {
+            for(const item of objectsToIntersect)
+            {
+                gsap.to(item.material, {duration: 1, opacity: 0.85})
+                gsap.to(item.material, {delay: 1, duration: 1, opacity: 1})
+            }
+        }
+
 
         // Check for intersects
         if(this.currentIntersect)
         {
             this.hoverObjects()
-        }
-        else
-        {
-            // Reset items after hover
-            for(const item in this.objectsToIntersect)
-            {
-                this.objectsToIntersect[item].material.opacity = 0.95;
-                this.lightSwitch.material.opacity = 0.95
-            }
         }
     }
 }
