@@ -25,8 +25,9 @@ export default class Raycaster extends EventEmitter
         this.lightSwitch = this.objectsToIntersect[2] // to flip the switch
         this.switchOn = false // initially off
         this.exposure = 1
-        this.musicModal = document.querySelector("#musicModal")
-        this.musicShowing = false
+        this.musicModal = document.querySelector(".musicModal")
+        this.canModal = document.querySelector(".canModal")
+        this.modalShowing = false
 
 
         // dark color for room
@@ -37,6 +38,12 @@ export default class Raycaster extends EventEmitter
         this.setSounds()
         this.setInstance()
         this.setEvent()
+    }
+
+    getStyle(id, name)
+    {
+        var element = document.getElementById(id);
+        return element.currentStyle ? element.currentStyle[name] : window.getComputedStyle ? window.getComputedStyle(element, null).getPropertyValue(name) : null;
     }
 
     setSounds()
@@ -79,7 +86,7 @@ export default class Raycaster extends EventEmitter
     // function to change opacity of objects on hoover
     hoverObjects()
     {
-        if(!this.musicShowing)
+        if(!this.modalShowing)
         {
             const switchIntersect =
             this.currentIntersect.object.name === "switchPlate" ||
@@ -105,7 +112,7 @@ export default class Raycaster extends EventEmitter
     clickObjects()
     {
      
-        if(this.currentIntersect && !this.musicShowing)
+        if(this.currentIntersect && !this.modalShowing)
         {
             const switchIntersect =
             this.currentIntersect.object.name === "switchPlate" ||
@@ -153,20 +160,29 @@ export default class Raycaster extends EventEmitter
             }
             else if(this.currentIntersect.object.name === 'headphones')
             {
-                if(!this.musicShowing)
+                if(!this.modalShowing)
                 {
                     this.musicModal.style.display = 'block';
-                    this.musicShowing = true
+                    this.modalShowing = true
                 }
                 else
                 {
                     this.musicModal.style.display = 'none';
-                    this.musicShowing = false
+                    this.modalShowing = false
                 }
             }
             else if(this.currentIntersect.object.name === 'can')
             {
-                document.querySelector('#canModal').style.display = 'block';
+                if(!this.modalShowing)
+                {
+                    this.canModal.style.display = 'block';
+                    this.modalShowing = true
+                }
+                else
+                {
+                    this.canModal.style.display = 'none';
+                    this.modalShowing = false
+                }
             }
             else
             {
@@ -181,8 +197,8 @@ export default class Raycaster extends EventEmitter
 
     update(objectsToIntersect)
     {   
-        if(this.musicModal.style.display === 'none'){
-            this.musicShowing = false
+        if(this.getStyle('canModal', 'display') && this.getStyle('musicModal', 'display')){
+            this.modalShowing = false
         }
 
         // update objectsToIntersect based on items from room. Arrow and pages are added dynamically

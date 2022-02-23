@@ -50,7 +50,32 @@ padding-right: 8px;
 }
 
 
-.Modal {
+.musicModal {
+    width: 30vw;
+    height: 70vh;
+    min-width: 400px;
+    
+    /* Center Align */
+    position: fixed;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    padding: 2%;
+    margin: auto;
+
+    /* Styling */
+    border-radius: 3%;
+    background-color: #004e64;
+    opacity: 0.98;
+
+    font-size: 14px;
+    display: none;
+    overflow-y: scroll;
+}
+
+.canModal {
     width: 30vw;
     height: 70vh;
     min-width: 400px;
