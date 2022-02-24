@@ -24,12 +24,14 @@ export default class Raycaster extends EventEmitter
         this.currentIntersect = null
         this.objectsToIntersect = objectsToIntersect
         this.lightSwitch = this.objectsToIntersect[2] // to flip the switch
+        this.lightSwitch2 = this.objectsToIntersect[3]
         this.switchOn = false // initially off
         this.exposure = 1
         this.musicModal = document.querySelector(".musicModal")
         this.canModal = document.querySelector(".canModal")
         this.modalShowing = false
         this.opacity = 1
+        this.pulseTime = 800
 
 
         // dark color for room
@@ -97,19 +99,19 @@ export default class Raycaster extends EventEmitter
             if (this.currentIntersect.object.name === "can")
             {
                 gsap.to(this.currentIntersect.object.material, {duration: 0.6, opacity: 0.85})
-                gsap.to(this.currentIntersect.object.material, {delay:0.55, duration: 0.4, opacity: 1})
+                gsap.to(this.currentIntersect.object.material, {delay: 0.65, duration: 0.6, opacity: 1})
             } 
             else if (this.currentIntersect.object.name === "headphones")
             {
                 gsap.to(this.currentIntersect.object.material, {duration: 0.6, opacity: 0.85})
-                gsap.to(this.currentIntersect.object.material, {delay:0.55, duration: 0.4, opacity: 1})
+                gsap.to(this.currentIntersect.object.material, {delay: 0.65, duration: 0.6, opacity: 1})
             }
             else if (switchIntersect)
             {
-                gsap.to(this.currentIntersect.object.material, {duration: 1, opacity: 0.85})
-                gsap.to(this.currentIntersect.object.material, {delay:0.55, duration: 0.4, opacity: 1})
+                gsap.to(this.lightSwitch2.material, {duration: 0.6, opacity: 0.85})
                 gsap.to(this.lightSwitch.material, {duration: 0.6, opacity: 0.85})
-                gsap.to(this.lightSwitch.material, {delay:0.55, duration: 0.4, opacity: 1})
+                gsap.to(this.lightSwitch2.material, {delay: 0.65, duration: 0.6, opacity: 1})
+                gsap.to(this.lightSwitch.material, {delay: 0.65, duration: 0.6, opacity: 1})
             }
         }
     }
@@ -120,6 +122,7 @@ export default class Raycaster extends EventEmitter
      
         if(this.currentIntersect && !this.modalShowing)
         {
+            this.pulseTime = 1200
             const switchIntersect =
             this.currentIntersect.object.name === "switchPlate" ||
             this.currentIntersect.object.name === "switch";
@@ -215,7 +218,7 @@ export default class Raycaster extends EventEmitter
         // Get Intersects from raycaster
         this.currentIntersect = this.instance.intersectObjects(this.objectsToIntersect)[0]
 
-        if(this.time.elapsed % 1200 === 0)
+        if(this.time.elapsed % this.pulseTime === 0)
         {
             for(const item of objectsToIntersect)
             {
