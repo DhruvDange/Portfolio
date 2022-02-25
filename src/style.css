@@ -130,16 +130,22 @@ padding-right: 8px;
 .modalSub-Heading2 {
     position: relative;
     text-align: center;
-    color: #bee9e8;
+    color: #e76f51;
     padding-top: 2vh;
     padding-bottom:  1vh;
+    display: inline-block;
 } 
 
 .modalSub-Heading3 {
     position: relative;
     text-align: center;
-    color: #bee9e8;
+    color: #9fffcb;
     padding-bottom: 2vh;
+}
+.modalSub-Heading4 {
+    color: #9fffcb;
+    display: inline-block;
+    padding-left: 1vh;
 }
 
 .low{

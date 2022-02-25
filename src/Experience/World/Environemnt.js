@@ -1,5 +1,5 @@
-export default class Environment
-{
-    // Lights and Env Maps
-        // None as of now
-}
+// export default class Environment
+// {
+//     // Lights and Env Maps
+//         // None as of now
+// }

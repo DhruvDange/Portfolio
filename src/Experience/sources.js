@@ -7,10 +7,17 @@ export default [
         ]
     },
     {
+        name: 'emissionModel',
+        type: 'gltfModel',
+        path: [
+            'new/DESK18.glb'
+        ]
+    },
+    {
         name: 'roomModel',
         type: 'gltfModel',
         path: [
-            'new/DESK15.glb'
+            'new/DESK19.glb'
         ]
     },
     {

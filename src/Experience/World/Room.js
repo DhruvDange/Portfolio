@@ -11,7 +11,6 @@ import emissionVertexShader from "../../shaders/emission/vertex.glsl";
 import glassFragmentShader from "../../shaders/glass/fragment.glsl"
 import arrowFragmentShader from "../../shaders/arrow/fragment.glsl";
 import arrowVertexShader from "../../shaders/arrow/vertex.glsl";
-import { BooleanKeyframeTrack } from "three";
 
 
 export default class Room
@@ -31,6 +30,7 @@ export default class Room
         // Setup
         this.resources = this.resources.items
         this.roomModel = this.resources.roomModel // room GLTF file
+        this.emissionModel = this.resources.emissionModel
 
         // Projects scene
         this.projects = projects // projects list
@@ -53,6 +53,8 @@ export default class Room
     setModel()
     {
         this.model = this.roomModel.scene
+        this.eModel = this.emissionModel.scene
+        this.eModel.scale.set(0.1, 0.1, 0.1)
         this.model.scale.set(0.1, 0.1, 0.1)
     }
 
@@ -63,14 +65,14 @@ export default class Room
         this.roomBase = this.model.children.find((child) => child.name === "base")
         this.headphoneMesh = this.model.children.find((child) => child.name === "headphones")
         this.canMesh = this.model.children.find((child) => child.name === "can")
-        this.emissionMesh = this.model.children.find((child) => child.name === "emission")
-        this.nanoLeafMesh = this.model.children.find((child) => child.name === "nanoLights")
+        this.emissionMesh = this.eModel.children.find((child) => child.name === "emission")
+        this.nanoLeafMesh = this.eModel.children.find((child) => child.name === "nanoLights")
         this.postItMesh = this.model.children.find((child) => child.name === "postit")
         this.textMesh = this.model.children.find((child) => child.name === "text")
         this.switchMesh = this.model.children.find((child) => child.name === "switch")
         this.switchPlateMesh = this.model.children.find((child) => child.name === "switchPlate")
         this.mouseMesh = this.model.children.find((child) => child.name === "mouseBody")
-        this.eMouseMesh = this.model.children.find((child) => child.name === "eMouse")
+        this.eMouseMesh = this.eModel.children.find((child) => child.name === "eMouse")
         this.mouseMesh.position.y += 0.02
         this.eMouseMesh.position.y += 0.02
 
@@ -221,6 +223,8 @@ export default class Room
     setMesh()
     {
         this.scene.add(this.model)
+        this.scene.add(this.eModel)
+
     }
 
     // Update colors on switch flip
