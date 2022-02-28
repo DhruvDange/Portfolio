@@ -115,9 +115,13 @@ export default class Resources extends EventEmitter
 
         if(this.loaded == this.toLoad)
         {
+
             document.querySelector(".Footer").style.display = 'block'
             document.querySelector(".Menu").style.display = 'block'
             document.querySelector(".meter").style.display = 'none'
+            document.getElementsByTagName("body")[0].style.backgroundColor = "#ffffff";
+            document.getElementsByTagName("html")[0].style.backgroundColor = "#ffffff";
+
             this.trigger('ready')
         }
     }
