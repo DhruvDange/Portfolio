@@ -109,8 +109,13 @@ export default class Resources extends EventEmitter
         this.items[source.name] = file
         this.loaded++
 
+        this.loadPercent = (this.loaded / this.toLoad) * 100;
+        this.loadPercent = this.loadPercent.toFixed(0)
+        document.querySelector("#loading").style.width = `${this.loadPercent}%`
+
         if(this.loaded == this.toLoad)
         {
+            document.querySelector(".meter").style.display = 'none'
             this.trigger('ready')
         }
     }
