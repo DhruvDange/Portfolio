@@ -220,6 +220,7 @@ button {
 }
 
 .Footer {
+  display: none;
   position: fixed;
   right: 30px;
   bottom: 30px;
@@ -282,6 +283,7 @@ button {
 }
 
 .Menu {
+  display: none;
   position: fixed;
   right: 30px;
   top: 10px;
