@@ -1,82 +1,78 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 html,
 body {
+  background-color: #0A263C;
   overflow-x: hidden;
   overflow-y: scroll;
   padding: 0;
   margin: 0;
   height: 400vh;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
-audio{
-    padding-top: 2vh;
-    display: inline-block;
+audio {
+  padding-top: 2vh;
+  display: inline-block;
 }
-
 
 audio::-webkit-media-controls-panel {
-    background-color: #9fffcb;
+  background-color: #9fffcb;
 }
 
 audio::-webkit-media-controls-volume-slider {
-background-color: #25a18e;
-border-radius: 25px;
-padding-left: 8px;
-padding-right: 8px;
+  background-color: #25a18e;
+  border-radius: 25px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 ::-webkit-scrollbar {
   display: none;
 }
 
+.meter {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 
-.meter { 
+  margin: auto;
 
-    position: fixed;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    
-    margin: auto;
-
-    height: 2vh;  
-    width: 50vw;
-    background: #ffffff;
-    border-radius: 25px;
-    padding: 2.2vh;
-    box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+  height: 2vh;
+  width: 50vw;
+  background: #ffffff;
+  border-radius: 25px;
+  padding: 2.2vh;
+  box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
 }
 
 .meter > span {
-    display: block;
-    height: 100%;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    background-color: #004e64;
-    background-image: linear-gradient(
-      center bottom,
-      rgb(43,194,83) 37%,
-      rgb(84,240,84) 69%
-    );
-    box-shadow: 
-      inset 0 2px 9px  rgba(255,255,255,0.3),
-      inset 0 -2px 6px rgba(0,0,0,0.4);
-    position: relative;
-    overflow: hidden;
-  }
+  display: block;
+  height: 100%;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: #004e64;
+  background-image: linear-gradient(
+    center bottom,
+    rgb(43, 194, 83) 37%,
+    rgb(84, 240, 84) 69%
+  );
+  box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+}
 
-
-.center{
-    text-align: center;
+.center {
+  text-align: center;
 }
 
 .webgl {
@@ -89,143 +85,138 @@ padding-right: 8px;
   outline: none;
 }
 
-
 .musicModal {
-    width: 30vw;
-    height: 70vh;
-    min-width: 400px;
-    
-    /* Center Align */
-    position: fixed;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    
-    padding: 2%;
-    margin: auto;
+  width: 30vw;
+  height: 70vh;
+  min-width: 400px;
 
-    /* Styling */
-    border-radius: 3%;
-    background-color: #004e64;
-    opacity: 0.98;
+  /* Center Align */
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 
-    font-size: 14px;
-    display: none;
-    overflow-y: scroll;
+  padding: 2%;
+  margin: auto;
+
+  /* Styling */
+  border-radius: 3%;
+  background-color: #004e64;
+  opacity: 0.98;
+
+  font-size: 14px;
+  display: none;
+  overflow-y: scroll;
 }
 
 .canModal {
-    width: 30vw;
-    height: 70vh;
-    min-width: 400px;
-    
-    /* Center Align */
-    position: fixed;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    
-    padding: 2%;
-    margin: auto;
+  width: 30vw;
+  height: 70vh;
+  min-width: 400px;
 
-    /* Styling */
-    border-radius: 3%;
-    background-color: #004e64;
-    opacity: 0.98;
+  /* Center Align */
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 
-    font-size: 14px;
-    display: none;
-    overflow-y: scroll;
+  padding: 2%;
+  margin: auto;
+
+  /* Styling */
+  border-radius: 3%;
+  background-color: #004e64;
+  opacity: 0.98;
+
+  font-size: 14px;
+  display: none;
+  overflow-y: scroll;
 }
 
 @media only screen and (max-width: 500px) {
-
-    .test {
-        width: 70vw;
-        min-width: 100px;
-    }
-
+  .test {
+    width: 70vw;
+    min-width: 100px;
+  }
 }
-.track{
-    width: 100%;
-    padding-top: 1vh;
+.track {
+  width: 100%;
+  padding-top: 1vh;
 }
 
 .modalHeading {
-    position: relative;
-    text-align: center;
-    color: #7ae582;
-    padding-bottom: 2vh;
+  position: relative;
+  text-align: center;
+  color: #7ae582;
+  padding-bottom: 2vh;
 }
 
 .modalSub-Heading {
-    position: relative;
-    text-align: center;
-    color: #7ae582;
-    padding-bottom: 2vh;
+  position: relative;
+  text-align: center;
+  color: #7ae582;
+  padding-bottom: 2vh;
 }
 
 .modalSub-Heading2 {
-    position: relative;
-    text-align: center;
-    color: #e76f51;
-    padding-top: 2vh;
-    padding-bottom:  1vh;
-    display: inline-block;
-} 
+  position: relative;
+  text-align: center;
+  color: #e76f51;
+  padding-top: 2vh;
+  padding-bottom: 1vh;
+  display: inline-block;
+}
 
 .modalSub-Heading3 {
-    position: relative;
-    text-align: center;
-    color: #9fffcb;
-    padding-bottom: 2vh;
+  position: relative;
+  text-align: center;
+  color: #9fffcb;
+  padding-bottom: 2vh;
 }
 .modalSub-Heading4 {
-    color: #9fffcb;
-    display: inline-block;
-    padding-left: 1vh;
+  color: #9fffcb;
+  display: inline-block;
+  padding-left: 1vh;
 }
 
-.low{
-    padding-top: 3vh;
+.low {
+  padding-top: 3vh;
 }
 
-.ib{
-    display: inline-block;
-    padding: 0px;
-    margin: 0px;
-    vertical-align: top;
-
+.ib {
+  display: inline-block;
+  padding: 0px;
+  margin: 0px;
+  vertical-align: top;
 }
 
 .play {
-    display: inline-block;
+  display: inline-block;
 }
 
-
-.coverImg{
-    height: 10vh;
-    float: left;
-    background: #555;
+.coverImg {
+  height: 10vh;
+  float: left;
+  background: #555;
 }
 
-.trackName{
-    padding: 0vh 2vh;
-    color: #9fffcb;
-    display: inline-block;
+.trackName {
+  padding: 0vh 2vh;
+  color: #9fffcb;
+  display: inline-block;
 }
 
-.compName{
-    height: 5vh;
-    padding: 1vh 2vh;
-    color: #9fffcb;
-    display: block;
+.compName {
+  height: 5vh;
+  padding: 1vh 2vh;
+  color: #9fffcb;
+  display: block;
 }
 
 button {
-    display: block;
+  display: block;
 }
 
 .Footer {
@@ -308,7 +299,7 @@ button {
   font-size: 18px;
 }
 .Menu nav a {
-    color: white;
+  color: white;
   margin-left: 20px;
   display: inline-block;
   text-decoration: none;
@@ -324,55 +315,53 @@ button {
   margin-left: 0;
 }
 @media (max-height: 600px), screen and (max-width: 767px) {
+  .Menu {
+    right: 10px;
+  }
 
-    .Menu {
-        right: 10px;
-    }
-
-    .Menu nav {
-        font-size: 2.5vh;
+  .Menu nav {
+    font-size: 2.5vh;
   }
 }
 
-
 /* CSS */
 .button-8 {
-    background-color: #e1ecf4;
-    border-radius: 3px;
-    border: 1px solid #7aa7c7;
-    box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
-    box-sizing: border-box;
-    color: #39739d;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 1.15385;
-    margin: 0.5vh;
-    outline: none;
-    padding: 1vh .8em;
-    position: relative;
-    text-align: center;
-    text-decoration: none;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    vertical-align: baseline;
-    white-space: nowrap;
-  }
-  
-  .button-8:hover,
-  .button-8:focus {
-    background-color: #b3d3ea;
-    color: #2c5777;
-  }
-  
-  .button-8:focus {
-    box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
-  }
-  
-  .button-8:active {
-    background-color: #a0c7e4;
-    box-shadow: none;
-    color: #2c5777;
-  }
+  background-color: #e1ecf4;
+  border-radius: 3px;
+  border: 1px solid #7aa7c7;
+  box-shadow: rgba(255, 255, 255, 0.7) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #39739d;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.15385;
+  margin: 0.5vh;
+  outline: none;
+  padding: 1vh 0.8em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+.button-8:hover,
+.button-8:focus {
+  background-color: #b3d3ea;
+  color: #2c5777;
+}
+
+.button-8:focus {
+  box-shadow: 0 0 0 4px rgba(0, 149, 255, 0.15);
+}
+
+.button-8:active {
+  background-color: #a0c7e4;
+  box-shadow: none;
+  color: #2c5777;
+}
