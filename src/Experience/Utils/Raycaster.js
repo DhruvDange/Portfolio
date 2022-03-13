@@ -31,7 +31,14 @@ export default class Raycaster extends EventEmitter
         this.canModal = document.querySelector(".canModal")
         this.modalShowing = false
         this.opacity = 1
-        this.pulseTime = 800
+        if(this.sizes.width > 480)
+        {
+            this.pulseTime = 800
+        }
+        else
+        {
+            this.pulseTime = 400
+        }
 
 
         // dark color for room
@@ -122,7 +129,14 @@ export default class Raycaster extends EventEmitter
      
         if(this.currentIntersect && !this.modalShowing)
         {
+            if(this.sizes.width > 480)
+        {
             this.pulseTime = 1200
+        }
+        else
+        {
+            this.pulseTime = 300
+        }
             const switchIntersect =
             this.currentIntersect.object.name === "switchPlate" ||
             this.currentIntersect.object.name === "switch";
@@ -169,6 +183,7 @@ export default class Raycaster extends EventEmitter
             }
             else if(this.currentIntersect.object.name === 'headphones')
             {
+                this.pulseTime = 800
                 if(!this.modalShowing)
                 {
                     this.musicModal.style.display = 'block';
@@ -222,8 +237,8 @@ export default class Raycaster extends EventEmitter
         {
             for(const item of objectsToIntersect)
             {
-                gsap.to(item.material, {duration: 1, opacity: 0.85})
-                gsap.to(item.material, {delay: 1, duration: 1, opacity: 1})
+                gsap.to(item.material, {duration: 0.8, opacity: 0.85})
+                gsap.to(item.material, {delay: 1, duration: 0.8, opacity: 1})
             }
         }
 

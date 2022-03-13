@@ -60,16 +60,16 @@ export default class Screen
     // To change screen for proejcts
     screenSwipe()
     {
-        this.scrollPercent = this.camera.scrollPercent
+        this.scrollPercent = this.camera.scrollPercent // 50 60
         
-        if((this.scrollPercent >= 70 && this.scrollPercent <= 80) && !this.projectIsShowing)
+        if((this.scrollPercent >= 50 && this.scrollPercent <= 60) && !this.projectIsShowing)
         {
             if(this.screenSaver)
                 this.destroyIntro()
             this.projectIsShowing = true
             this.room.setProjectScene()
         }
-        if(this.projectIsShowing && !(this.scrollPercent >= 65 && this.scrollPercent <= 85))
+        if(this.projectIsShowing && !(this.scrollPercent >= 45 && this.scrollPercent <= 65))
         {
             this.room.removeProjectScene()
             this.projectIsShowing = false
