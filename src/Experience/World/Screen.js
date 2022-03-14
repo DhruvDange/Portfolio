@@ -11,6 +11,7 @@ export default class Screen
         this.experience = new Experience()
         this.scene = this.experience.scene
         this.camera = this.experience.camera
+        this.sizes = this.experience.sizes
         this.renderer = this.experience.renderer.webGLRenderer
         this.room = this.experience.world.room
         this.resources = this.experience.resources
@@ -62,17 +63,36 @@ export default class Screen
     {
         this.scrollPercent = this.camera.scrollPercent // 50 60
         
-        if((this.scrollPercent >= 50 && this.scrollPercent <= 60) && !this.projectIsShowing)
+        if(!this.projectIsShowing)
         {
-            if(this.screenSaver)
-                this.destroyIntro()
-            this.projectIsShowing = true
-            this.room.setProjectScene()
+            if((this.scrollPercent >= 50 && this.scrollPercent <= 60) && this.sizes.width < 480)
+            {
+                if(this.screenSaver)
+                    this.destroyIntro()
+                this.projectIsShowing = true
+                this.room.setProjectScene()
+            }
+            else if((this.scrollPercent >= 70 && this.scrollPercent <= 80)  && this.sizes.width > 480)
+            {
+                if(this.screenSaver)
+                    this.destroyIntro()
+                this.projectIsShowing = true
+                this.room.setProjectScene()
+            }
+            
         }
-        if(this.projectIsShowing && !(this.scrollPercent >= 45 && this.scrollPercent <= 65))
+        if(this.projectIsShowing)
         {
-            this.room.removeProjectScene()
-            this.projectIsShowing = false
+            if(!(this.scrollPercent >= 45 && this.scrollPercent <= 65) && this.sizes.width < 480)
+            {
+                this.room.removeProjectScene()
+                this.projectIsShowing = false
+            }
+            else if(!(this.scrollPercent >= 65 && this.scrollPercent <= 85) && this.sizes.width > 480)
+            {
+                this.room.removeProjectScene()
+                this.projectIsShowing = false
+            }
         }
         if(this.scrollPercent < 3 && !this.screenShowing){
             this.setIntroScreen()
