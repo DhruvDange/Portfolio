@@ -299,6 +299,14 @@ export default class Room
     // set the sscene to display projects
     setProjectScene()
     {
+        if(this.sizes.width < 480)
+        {
+            this.arrow1Mesh.scale.set(0.25, 0.08, 0.1)
+            this.arrow2Mesh.scale.set(0.25, 0.08, 0.1)
+            this.arrow1Mesh.position.y -= 0.06
+            this.arrow2Mesh.position.y -= 0.06
+
+        }
         gsap.to(this.arrowMaterial.uniforms.uAlpha, {duration: 0.5, value: 1})
         window.addEventListener('mousemove', this.handleMouseMove , true)
         for(let i = 1; i < this.projects.length; i++)

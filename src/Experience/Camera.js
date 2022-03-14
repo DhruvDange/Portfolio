@@ -67,25 +67,20 @@ export default class Camera
 
     update()
     {
+        this.workScroll = this.sizes.width > 480 ? 2.2 : 1.65
         if(window.location.hash === "#about"){
             gsap.to(window, { duration: 2, ease: "power1", scrollTo: this.sizes.height * 0 });
         }
         else if(window.location.hash === "#skills"){
             gsap.to(window, { duration: 2, ease: "power1", scrollTo: this.sizes.height * 0.75 });
         }
-        else if(window.location.hash === "#works"){
-            if(this.sizes.width > 480)
-            {
-                gsap.to(window, { duration: 2, ease: "power1", scrollTo: this.sizes.height * 2.2 });
-            }
-            else{
-                gsap.to(window, { duration: 2, ease: "power1", scrollTo: this.sizes.height * 1.65 });
-            }
-        }
         else if(window.location.hash === "#home"){
             gsap.to(window, { duration: 3.5, ease: "sine", scrollTo: this.sizes.height * 3.2 });
-
         }
+        else if(window.location.hash === "#works"){
+            gsap.to(window, { duration: 2, ease: "power1", scrollTo: this.sizes.height * this.workScroll });
+        }
+        
 
         // this.controls.update()
     }
@@ -166,6 +161,7 @@ export default class Camera
             if(this.sizes.width < 480)
             {
                 // Rotation
+                this.instance.rotation.y = (this.lerp(0, 0,this.scalePercent(50, 70)) / 50)
 
                 // Position
                 this.instance.position.y = this.lerp(0.77, 0.77,this.scalePercent(50, 70))
