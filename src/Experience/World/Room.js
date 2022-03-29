@@ -303,8 +303,8 @@ export default class Room
         {
             this.arrow1Mesh.scale.set(0.25, 0.08, 0.1)
             this.arrow2Mesh.scale.set(0.25, 0.08, 0.1)
-            this.arrow1Mesh.position.y -= 0.06
-            this.arrow2Mesh.position.y -= 0.06
+            this.arrow1Mesh.position.y -= 0.04
+            this.arrow2Mesh.position.y -= 0.04
 
         }
         gsap.to(this.arrowMaterial.uniforms.uAlpha, {duration: 0.5, value: 1})
