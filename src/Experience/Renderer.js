@@ -1,8 +1,5 @@
 import Experience from "./Experience";
 import * as THREE from "three"
-import {
-    CSS3DRenderer,
-} from "three/examples/jsm/renderers/CSS3DRenderer";
 
 export default class Renderer
 {
@@ -17,12 +14,26 @@ export default class Renderer
         this.setWebGLInstance()
     }
 
+    isIOSDevice(){
+        return /iPad|iPhone|iPod/.test(navigator.userAgent) &&
+                !window.MSStream;
+     }
+
     setWebGLInstance()
     {
-        this.webGLRenderer = new THREE.WebGLRenderer({
-            antialias: true,
-            alpha: true
-        });
+        if(!this.isIOSDevice())
+        {
+            this.webGLRenderer = new THREE.WebGLRenderer({
+                antialias: true,
+                alpha: true
+            });
+        }
+        else
+        {
+            this.webGLRenderer = new THREE.WebGLRenderer({
+                alpha: true
+            });
+        }
         this.webGLRenderer.localClippingEnabled = false
         this.webGLRenderer.outputEncoding = THREE.sRGBEncoding;
         this.webGLRenderer.toneMapping = THREE.ACESFilmicToneMapping;
