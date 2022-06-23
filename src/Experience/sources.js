@@ -17,7 +17,7 @@ export default [
         name: 'roomModel',
         type: 'gltfModel',
         path: [
-            'new/DESK19.glb'
+            'new/DESK20.glb'
         ]
     },
     {
