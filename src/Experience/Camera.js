@@ -15,6 +15,8 @@ export default class Camera
         this.canvas = this.experience.canvas
         this.projectShowing = false
         this.scrollY = 0
+        this.currentScroll = 0;
+
         gsap.registerPlugin(ScrollToPlugin);
 
         this.setInstance()
@@ -32,6 +34,7 @@ export default class Camera
 
         this.instance.position.set(-0.40, 0.75, 0.2)
         this.scene.add(this.instance)
+
     }
 
     setOrbitControls()
@@ -45,6 +48,7 @@ export default class Camera
     {
         // Convert scroll values to a percentage
         this.hash = window.location.hash
+        this.animations = this.experience.animations
         if(this.hash !== "")
         {
             window.location.hash = ""
@@ -99,112 +103,160 @@ export default class Camera
         return (this.scrollPercent - start) / (end - start)
     }
 
+
     setCameraPosition()
     {
-        
-        if(this.scrollPercent >= 0 && this.scrollPercent <= 25)
-        {
 
+        if (
+            (this.scrollPercent > 0 && this.scrollPercent < 25) &&
+            (this.currentScroll < this.scrollPercent)
+        )
+        {
             if(this.sizes.width < 480)
             {
-                // Rotation
-                this.instance.rotation.y = (this.lerp(0, 70, this.scalePercent(0, 25)) / 50)
-
-                // Position
-                this.instance.position.x = this.lerp(-0.40, -0.25, this.scalePercent(0, 25))
-                this.instance.position.y = this.lerp(0.75, 0.77, this.scalePercent(0, 25))
-                this.instance.position.z = this.lerp(0.2, -0.3, this.scalePercent(0, 25))
+                this.animations.animation1_mobile()
 
             }
             else
             {
-                    // Rotation
-                this.instance.rotation.y = (this.lerp(0, 70, this.scalePercent(0, 25)) / 50)
-
-                // Position
-                this.instance.position.x = this.lerp(-0.4, -0.25, this.scalePercent(0, 25))
-                this.instance.position.z = this.lerp(0.2, -0.3, this.scalePercent(0, 25))
+                this.animations.animation1_pc()
             }
-
-            
+            this.currentScroll = this.scrollPercent;
         }
-        else if(this.scrollPercent > 25 && this.scrollPercent <= 50)
+
+        
+        if (
+            (this.scrollPercent < this.currentScroll) &&
+            (this.scrollPercent > 0 && this.scrollPercent < 25)
+        )
         {
-            
             if(this.sizes.width < 480)
             {
-                // Rotation
-                this.instance.rotation.y = (this.lerp(70, 0, this.scalePercent(25, 50)) / 50)
+                this.animations.animation1Back()
 
-                // Position
-                this.instance.position.x = this.lerp(-0.25, -0.4, this.scalePercent(25, 50))
-                this.instance.position.y = this.lerp(0.77, 0.77, this.scalePercent(25, 50))
-                this.instance.position.z = this.lerp(-0.3, 0.2, this.scalePercent(25, 50))
             }
             else
             {
-                // Rotation
-                this.instance.rotation.x = this.lerp(0, -0.1, this.scalePercent(25, 50))
-                this.instance.rotation.y = (this.lerp(70, 27, this.scalePercent(25, 50)) / 50)
-                this.instance.rotation.z = this.lerp(0, 0.06, this.scalePercent(25, 50))
+                this.animations.animation1Back()
+            }
+            this.currentScroll = this.scrollPercent;
+        }
+        
+        else if(this.scrollPercent > 25 && this.scrollPercent <= 50)
+        {          
 
-                // Position
-                this.instance.position.x = this.lerp(-0.25, 0.35, this.scalePercent(25, 50))
-                this.instance.position.y = this.lerp(0.75, 0.8, this.scalePercent(25, 50))
-                this.instance.position.z = this.lerp(-0.3, 0.55, this.scalePercent(25, 50))
+            if (
+                (this.scrollPercent > 25 && this.scrollPercent < 50) &&
+                (this.currentScroll < this.scrollPercent)
+            )
+            {
+                if(this.sizes.width < 480)
+                {
+                    this.animations.animation2_mobile()
+    
+                }
+                else
+                {
+                    this.animations.animation2_pc()
+                }
+                this.currentScroll = this.scrollPercent;
+            }
+    
+            
+            if (
+                (this.scrollPercent < this.currentScroll) &&
+                (this.scrollPercent > 25 && this.scrollPercent < 50)
+            )
+            {
+                if(this.sizes.width < 480)
+                {
+                    this.animations.animation1_mobile()
+    
+                }
+                else
+                {
+                    this.animations.animation1_pc()
+                }
+                this.currentScroll = this.scrollPercent;
             }
 
         }
         else if(this.scrollPercent > 50 && this.scrollPercent <= 70)
         {
             
-            if(this.sizes.width < 480)
-            {
-                // Rotation
-                this.instance.rotation.y = (this.lerp(0, 0,this.scalePercent(50, 70)) / 50)
 
-                // Position
-                this.instance.position.y = this.lerp(0.77, 0.77,this.scalePercent(50, 70))
-                this.instance.position.z = this.lerp(0.2, 0.8, this.scalePercent(50, 70))
+            if (
+                (this.scrollPercent > 50 && this.scrollPercent < 70) &&
+                (this.currentScroll < this.scrollPercent)
+            )
+            {
+                if(this.sizes.width < 480)
+                {
+                    this.animations.animation3_mobile()
+    
+                }
+                else
+                {
+                    this.animations.animation3_pc()
+                }
+                this.currentScroll = this.scrollPercent;
             }
-            else
+    
+            
+            if (
+                (this.scrollPercent < this.currentScroll) &&
+                (this.scrollPercent > 50 && this.scrollPercent < 70)
+            )
             {
-                // Rotation
-                this.instance.rotation.x = this.lerp(-0.1, 0, this.scalePercent(50, 70))
-                this.instance.rotation.y = (this.lerp(27, 0,this.scalePercent(50, 70)) / 50)
-                this.instance.rotation.z = this.lerp(0.06, 0, this.scalePercent(50, 70))
-
-                // Position
-                this.instance.position.x = this.lerp(0.35, -0.38,this.scalePercent(50, 70))
-                this.instance.position.y = this.lerp(0.8, 0.71,this.scalePercent(50, 70))
-                this.instance.position.z = this.lerp(0.55, 0,this.scalePercent(50, 70))
+                if(this.sizes.width < 480)
+                {
+                    this.animations.animation2_mobile()
+    
+                }
+                else
+                {
+                    this.animations.animation2_pc()
+                }
+                this.currentScroll = this.scrollPercent;
             }
 
         }
         else if(this.scrollPercent > 80 && this.scrollPercent <= 100)
-        {
-            
-            if(this.sizes.width < 480)
+        {    
+
+            if (
+                (this.scrollPercent > 80 && this.scrollPercent < 100) &&
+                (this.currentScroll < this.scrollPercent)
+            )
             {
-                // Rotation
-                this.instance.rotation.y = (this.lerp(0, 42,this.scalePercent(80, 100)) / 50)
-                
-                // Position
-                this.instance.position.x = this.lerp(-0.40, 0.8,this.scalePercent(80, 100))
-                this.instance.position.y = this.lerp(0.77, 0.79,this.scalePercent(80, 100))
-                this.instance.position.z = this.lerp(0.8, 0.35,this.scalePercent(80, 100))
+                if(this.sizes.width < 480)
+                {
+                    this.animations.animation4_mobile()
+    
+                }
+                else
+                {
+                    this.animations.animation4_pc()
+                }
+                this.currentScroll = this.scrollPercent;
             }
-            else
+    
+            
+            if (
+                (this.scrollPercent < this.currentScroll) &&
+                (this.scrollPercent > 80 && this.scrollPercent < 100)
+            )
             {
-               // Rotation
-                // this.instance.rotation.y = this.lerp(0, 0.1,this.scalePercent(80, 100))
-                this.instance.rotation.x = this.lerp(0, -0.1,this.scalePercent(80, 100))
-                // this.instance.rotation.z = this.lerp(0, -0.04,this.scalePercent(80, 100))
-                
-                // Position
-                this.instance.position.y = this.lerp(0.71, 0.8,this.scalePercent(80, 100))
-                //this.instance.position.x = this.lerp(-0.38, -0.6,this.scalePercent(80, 100))
-                this.instance.position.z = this.lerp(0, 0.8,this.scalePercent(80, 100))
+                if(this.sizes.width < 480)
+                {
+                    this.animations.animation3_mobile()
+    
+                }
+                else
+                {
+                    this.animations.animation3_pc()
+                }
+                this.currentScroll = this.scrollPercent;
             }
         }
     }
