@@ -175,7 +175,6 @@ export default class Raycaster extends EventEmitter
             else if(this.currentIntersect.object.name === 'arrow1')
             {
                 this.room.prevScreen()
-                console.log(this.scene.children);
             }
             else if(this.currentIntersect.object.name === 'arrow2')
             {

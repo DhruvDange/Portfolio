@@ -41,10 +41,7 @@ export default class World
             
         })
 
-        window.addEventListener('scroll', (e) => 
-        {
-            e.preventDefault()
-            this.camera.onScroll()
+        this.camera.on('scroll', ()=> {
             this.screen.screenSwipe()
         })
     }

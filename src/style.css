@@ -11,8 +11,10 @@ body {
   overflow-y: scroll;
   padding: 0;
   margin: 0;
-  height: 400vh;
+  height: 600vh;
   font-family: "Montserrat", sans-serif;
+  
+
 }
 
 audio {
@@ -34,6 +36,7 @@ audio::-webkit-media-controls-volume-slider {
 ::-webkit-scrollbar {
   display: none;
 }
+
 
 .meter {
   position: fixed;
