@@ -11,7 +11,7 @@ export default class Animations
         this.instance = this.camera.instance;
         this.canScroll = true;
         this.workScroll = this.sizes.width > 480 ? 2.2 : 1.65;
-        this.currentScroll = 0
+        // this.currentScroll = 0
         this.currentScene = 0;
     }
 
@@ -23,14 +23,14 @@ export default class Animations
             x: 0,
             onStart: () =>
             {
+                this.currentScene = 1;
                 this.canScroll = false;
             },
             onComplete: () =>
             {
                 this.canScroll = true;
-                this.currentScene = 1;
-                window.scrollTo(0, this.sizes.bodyHeight * 0.25);
-                this.currentScroll = this.sizes.bodyHeight * 0.25
+                // window.scrollTo(0, this.sizes.bodyHeight * 0.25);
+                // this.currentScroll = this.sizes.bodyHeight * 0.25
             },
         });
         gsap.to(this.instance.rotation, { duration: 2, ease: "power1.out", z: 0 });
@@ -60,14 +60,13 @@ export default class Animations
             x: 0.0,
             onStart: () =>
             {
+                this.currentScene = 2;
                 this.canScroll = false;
             },
             onComplete: () =>
             {
                 this.canScroll = true;
-                this.currentScene = 2;
-                window.scrollTo(0, this.sizes.bodyHeight * 0.5);  
-                this.currentScroll = this.sizes.bodyHeight * 0.50     
+ 
             },
         });
         gsap.to(this.instance.rotation, {
@@ -112,13 +111,14 @@ export default class Animations
             onStart: () =>
             {
                 this.canScroll = false;
+                this.currentScene = 3;
+
             },
             onComplete: () =>
             {
                 this.canScroll = true;
-                this.currentScene = 3;
-                window.scrollTo(0, this.sizes.bodyHeight * 0.75);
-                this.currentScroll = this.sizes.bodyHeight * 0.75
+                // window.scrollTo(0, this.sizes.bodyHeight * 0.75);
+                // this.currentScroll = this.sizes.bodyHeight * 0.75
             },
         });
         gsap.to(this.instance.rotation, {
@@ -152,14 +152,14 @@ export default class Animations
             x: 0.0,
             onStart: () =>
             {
+                this.currentScene = 4;
                 this.canScroll = false;
             },
             onComplete: () =>
             {
                 this.canScroll = true;
-                this.currentScene = 4;
-                window.scrollTo(0, this.sizes.bodyHeight * 0.9);
-                this.currentScroll = this.sizes.bodyHeight * 0.9
+                // window.scrollTo(0, this.sizes.bodyHeight * 0.9);
+                // this.currentScroll = this.sizes.bodyHeight * 0.9
             },
         });
         gsap.to(this.instance.rotation, {
@@ -198,14 +198,14 @@ export default class Animations
             y: 0,
             onStart: () =>
             {
+                this.currentScene = 0;
                 this.canScroll = false;
             },
             onComplete: () =>
             {
                 this.canScroll = true;
-                this.currentScene = 0;
-                window.scrollTo(0, 0);
-                this.currentScroll = 0
+                // window.scrollTo(0, 0);
+                // this.currentScroll = 0
             },
         });
         gsap.to(this.instance.position, {
@@ -234,9 +234,8 @@ export default class Animations
             onComplete: () =>
             {
                 this.canScroll = true;
-                this.currentScene = 1;
-                window.scrollTo(0, this.sizes.bodyHeight * 0.25);
-                this.currentScroll = this.sizes.bodyHeight * 0.25
+                // window.scrollTo(0, this.sizes.bodyHeight * 0.25);
+                // this.currentScroll = this.sizes.bodyHeight * 0.25
             },
         });
         gsap.to(this.instance.rotation, { duration: 2, ease: "power1.out", x: 0 });
@@ -267,14 +266,14 @@ export default class Animations
             y: 0,
             onStart: () =>
             {
+                this.currentScene = 2;
                 this.canScroll = false;
             },
             onComplete: () =>
             {
                 this.canScroll = true;
-                this.currentScene = 2;
-                window.scrollTo(0, this.sizes.bodyHeight * 0.50);
-                this.currentScroll = this.sizes.bodyHeight * 0.50
+                // window.scrollTo(0, this.sizes.bodyHeight * 0.50);
+                // this.currentScroll = this.sizes.bodyHeight * 0.50
             },
         });
         gsap.to(this.instance.rotation, { duration: 2, ease: "power1.out", x: 0 });
@@ -305,14 +304,14 @@ export default class Animations
             y: 0,
             onStart: () =>
             {
+                this.currentScene = 3;
                 this.canScroll = false;
             },
             onComplete: () =>
             {
                 this.canScroll = true;
-                this.currentScene = 3;
-                window.scrollTo(0, this.sizes.bodyHeight * 0.75);
-                this.currentScroll = this.sizes.bodyHeight * 0.75
+                // window.scrollTo(0, this.sizes.bodyHeight * 0.75);
+                // this.currentScroll = this.sizes.bodyHeight * 0.75
             },
         });
         gsap.to(this.instance.rotation, { duration: 2, ease: "power1.out", x: 0 });
@@ -343,14 +342,14 @@ export default class Animations
             y: 1,
             onStart: () =>
             {
+                this.currentScene = 4;
                 this.canScroll = false;
             },
             onComplete: () =>
             {
                 this.canScroll = true;
-                this.currentScene = 4;
-                window.scrollTo(0, this.sizes.bodyHeight * 0.9);
-                this.currentScroll = this.sizes.bodyHeight * 0.9
+                // window.scrollTo(0, this.sizes.bodyHeight * 0.9);
+                // this.currentScroll = this.sizes.bodyHeight * 0.9
             },
         });
         gsap.to(this.instance.rotation, { duration: 2, ease: "power1.out", x: 0 });

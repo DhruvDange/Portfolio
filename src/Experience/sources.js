@@ -50,9 +50,9 @@ export default [
     },
     {
         name: 'screen',
-        type: 'ktx2',
+        type: 'texture',
         path: [
-            'new/screen.ktx2'
+            'new/screen1.png'
         ]
     }
 ]
