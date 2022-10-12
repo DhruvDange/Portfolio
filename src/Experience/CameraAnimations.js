@@ -20,7 +20,7 @@ export default class Animations
         gsap.to(this.instance.rotation, {
             duration: 2,
             ease: "power1.out",
-            x: 0,
+            x: 0.02,
             onStart: () =>
             {
                 this.currentScene = 1;
@@ -37,7 +37,7 @@ export default class Animations
         gsap.to(this.instance.rotation, {
             duration: 2,
             ease: "power1.out",
-            y: 1.3,
+            y: 1.5,
         });
 
         gsap.to(this.instance.position, {
@@ -48,7 +48,12 @@ export default class Animations
         gsap.to(this.instance.position, {
             duration: 2,
             ease: "power1.out",
-            z: -0.3,
+            y: 0.77,
+        });
+        gsap.to(this.instance.position, {
+            duration: 2,
+            ease: "power1.out",
+            z: -0.35,
         });
     }
 
