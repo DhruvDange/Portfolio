@@ -492,6 +492,7 @@ export default class Camera
             this.hash = ""
         }
         this.scrollY = window.scrollY
+        console.log(this.scrollY);
         this.docHeight = document.body.offsetHeight
         this.windowHeight = this.sizes.height
         this.scrollPercent = this.scrollY / (this.docHeight - this.windowHeight) * 100
