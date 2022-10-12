@@ -16,5 +16,5 @@ export default [
         href: 'https://velocitaracing.github.io/',
         src: 'new/velocita.jpg',
         name: 'velocita'
-    }
+    },
 ]

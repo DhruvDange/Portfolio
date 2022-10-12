@@ -325,12 +325,12 @@ export default class Animations
         gsap.to(this.instance.position, {
             duration: 2,
             ease: "power1.out",
-            y: 0.77,
+            y: 0.71,
         });
         gsap.to(this.instance.position, {
             duration: 2,
             ease: "power1.out",
-            z: 0.8,
+            z: 0.3,
         });
     }
 
