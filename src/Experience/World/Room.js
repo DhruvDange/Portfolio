@@ -342,7 +342,6 @@ export default class Room
     removeProjectScene()
     {
         gsap.to(this.arrowMaterial.uniforms.uAlpha, {duration: 0.5, value: 0})
-        window.removeEventListener('mousemove', this.handleMouseMove, true)
         for(let i = 1; i < this.projects.length; i++)
         {
             this.projects[i].model.position.z = -3

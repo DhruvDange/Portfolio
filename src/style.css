@@ -13,9 +13,13 @@ body {
   margin: 0;
   height: 300vh;
   font-family: "Montserrat", sans-serif;
-  
-
 }
+
+@media only screen and (max-width: 500px) {
+    body{
+        height: 600vh;
+    }
+  }
 
 audio {
   padding-top: 2vh;

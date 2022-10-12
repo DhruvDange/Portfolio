@@ -46,6 +46,8 @@ export default class Screen
         this.screenSaver = new THREE.Mesh(monitorGeometry, screenSaverMaterial)
         this.screenSaver.name = 'monitorIntro'
         this.screenSaver.position.set(-0.403, 0.748, -0.782)
+        this.screenSaver.rotation.z = -Math.PI
+        this.screenSaver.rotation.y = -Math.PI
         this.screenShowing = true
         this.scene.add(this.screenSaver)
     }
