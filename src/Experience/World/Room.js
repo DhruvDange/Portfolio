@@ -364,7 +364,6 @@ export default class Room
             this.projects[i].model.position.z = -3
             this.projects[i].model.rotation.z = -Math.PI
             this.projects[i].model.rotation.y = -Math.PI
-
             this.scene.add(this.projects[i].model)
         }
     }

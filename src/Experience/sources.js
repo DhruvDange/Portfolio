@@ -42,10 +42,17 @@ export default [
         ]
     },
     {
-        name: 'velocita',
+        name: 'metastart',
         type: 'ktx2',
         path: [
-            'new/velocita.ktx2'
+            'new/metastart.ktx2'
+        ]
+    },
+    {
+        name: 'upchild',
+        type: 'ktx2',
+        path: [
+            'new/upchild.ktx2'
         ]
     },
     {
