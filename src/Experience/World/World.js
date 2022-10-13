@@ -41,11 +41,14 @@ export default class World
             
         })
 
+        // this.camera.on('scroll', ()=> {
+        //     this.screen.screenSwipe()
+        // })
+
         window.addEventListener('scroll', (e) => 
         {
             e.preventDefault()
             this.camera.onScroll()
-            this.screen.screenSwipe()
         })
     }
 
@@ -57,6 +60,7 @@ export default class World
             this.raycaster.update(this.objectsToIntersect)
             this.room.update()
             this.audioExperience.update();
+            this.screen.screenSwipe()
             this.room.nanoLeafMesh.material.uniforms.uAlpha.value = this.audioExperience.uAlpha
             this.room.emissionMesh.material.uniforms.uAlpha.value = this.audioExperience.uAlpha
             if(this.audioExperience.uAlpha !== 1 && this.audioExperience.uAlpha !== 0)

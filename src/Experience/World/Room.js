@@ -42,6 +42,9 @@ export default class Room
         // screen size
         this.monitorGeometry = new THREE.PlaneBufferGeometry(0.55, 0.3)
 
+        window.addEventListener('mousemove', this.handleMouseMove , true)
+
+
         this.setModel()
         this.extractChildren()
         this.setTextures()
@@ -308,7 +311,6 @@ export default class Room
 
         }
         gsap.to(this.arrowMaterial.uniforms.uAlpha, {duration: 0.5, value: 1})
-        window.addEventListener('mousemove', this.handleMouseMove , true)
         for(let i = 1; i < this.projects.length; i++)
         {
             this.objectsToIntersect.push(this.projects[i].model)
@@ -340,7 +342,6 @@ export default class Room
     removeProjectScene()
     {
         gsap.to(this.arrowMaterial.uniforms.uAlpha, {duration: 0.5, value: 0})
-        window.removeEventListener('mousemove', this.handleMouseMove, true)
         for(let i = 1; i < this.projects.length; i++)
         {
             this.projects[i].model.position.z = -3
@@ -363,7 +364,6 @@ export default class Room
             this.projects[i].model.position.z = -3
             this.projects[i].model.rotation.z = -Math.PI
             this.projects[i].model.rotation.y = -Math.PI
-
             this.scene.add(this.projects[i].model)
         }
     }

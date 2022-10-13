@@ -11,9 +11,15 @@ body {
   overflow-y: scroll;
   padding: 0;
   margin: 0;
-  height: 400vh;
+  height: 350vh;
   font-family: "Montserrat", sans-serif;
 }
+
+@media only screen and (max-width: 500px) {
+    body{
+        height: 500vh;
+    }
+  }
 
 audio {
   padding-top: 2vh;
@@ -34,6 +40,7 @@ audio::-webkit-media-controls-volume-slider {
 ::-webkit-scrollbar {
   display: none;
 }
+
 
 .meter {
   position: fixed;
@@ -89,6 +96,8 @@ audio::-webkit-media-controls-volume-slider {
   width: 30vw;
   height: 70vh;
   min-width: 400px;
+  max-width: 400px;
+
 
   /* Center Align */
   position: fixed;
@@ -102,7 +111,8 @@ audio::-webkit-media-controls-volume-slider {
 
   /* Styling */
   border-radius: 3%;
-  background-color: #004e64;
+  background-color: #004e6485;
+  backdrop-filter: saturate(180%) blur(10px);
   opacity: 0.98;
 
   font-size: 14px;
@@ -114,6 +124,8 @@ audio::-webkit-media-controls-volume-slider {
   width: 30vw;
   height: 70vh;
   min-width: 400px;
+  max-width: 400px;
+
 
   /* Center Align */
   position: fixed;
@@ -127,7 +139,8 @@ audio::-webkit-media-controls-volume-slider {
 
   /* Styling */
   border-radius: 3%;
-  background-color: #004e64;
+  background-color: #004e648c;
+  backdrop-filter: saturate(180%) blur(10px);
   opacity: 0.98;
 
   font-size: 14px;

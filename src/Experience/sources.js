@@ -1,9 +1,16 @@
 export default [
+    // {
+    //     name: 'roomTexture',
+    //     type: 'ktx2',
+    //     path: [
+    //         'new/roomV7.ktx2'
+    //     ]
+    // },
     {
         name: 'roomTexture',
-        type: 'ktx2',
+        type: 'texture',
         path: [
-            'new/roomV11.ktx2'
+            'new/roomV8.jpg'
         ]
     },
     {
@@ -17,7 +24,7 @@ export default [
         name: 'roomModel',
         type: 'gltfModel',
         path: [
-            'new/DESK20.glb'
+            'new/roomNew4.glb'
         ]
     },
     {
@@ -35,10 +42,17 @@ export default [
         ]
     },
     {
-        name: 'velocita',
+        name: 'metastart',
         type: 'ktx2',
         path: [
-            'new/velocita.ktx2'
+            'new/metastart.ktx2'
+        ]
+    },
+    {
+        name: 'upchild',
+        type: 'ktx2',
+        path: [
+            'new/upchild.ktx2'
         ]
     },
     {
@@ -52,7 +66,7 @@ export default [
         name: 'screen',
         type: 'ktx2',
         path: [
-            'new/screen.ktx2'
+            'new/screen1.ktx2'
         ]
     }
 ]
