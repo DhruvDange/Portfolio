@@ -6,7 +6,6 @@ import Renderer from "./Renderer.js"
 import World from "./World/World.js"
 import Resources from "./Utils/Resources.js"
 import sources from "./sources.js"
-import Loading from "./Loading.js"
 import Animations from "./CameraAnimations.js"
 
 let instance = null
@@ -31,9 +30,8 @@ export default class Experience{
         // Scenes
         this.scene = new THREE.Scene()
         this.scene.background = new THREE.Color(0x1a2c3c);
+        this.scene.fog = new THREE.Fog(0x1a2c3c, 0.1, 1);
 
-        // Loading Screen
-        this.loading = new Loading()
         
         this.camera = new Camera()
         this.animations = new Animations()

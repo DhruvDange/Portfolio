@@ -3,6 +3,7 @@ import Raycaster from "../Utils/Raycaster";
 import Room from "./Room";
 import Screen from "./Screen";
 import AudioExperience from "./Audio";
+import gsap from 'gsap'
 
 
 export default class World
@@ -21,10 +22,19 @@ export default class World
         this.resources.on('ready', () => 
         {
             this.room = new Room()
+            gsap.to(this.scene.fog, {
+                duration: 1.5,
+                ease: "power1.in",
+                far: 5,
+            });
 
+            gsap.to(this.camera.instance.position, {
+                duration: 2,
+                ease: "power1.out",
+                z: 0.2,
+            });
             this.objectsToIntersect = this.room.objectsToIntersect
             this.raycaster = new Raycaster(this.objectsToIntersect)
-            this.loading.setAplha()
             this.screen = new Screen()
             this.audioExperience = new AudioExperience()
 
