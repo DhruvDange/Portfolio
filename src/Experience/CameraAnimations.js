@@ -249,7 +249,7 @@ export default class Animations
         gsap.to(this.instance.position, {
             duration: 2,
             ease: "power1.out",
-            x: -0.2,
+            x: -0.3,
         });
         gsap.to(this.instance.position, {
             duration: 2,
@@ -259,7 +259,7 @@ export default class Animations
         gsap.to(this.instance.position, {
             duration: 2,
             ease: "power1.out",
-            z: -0.2,
+            z: -0.22,
         });
     }
 
@@ -335,7 +335,7 @@ export default class Animations
         gsap.to(this.instance.position, {
             duration: 2,
             ease: "power1.out",
-            z: 0.3,
+            z: 0.2,
         });
     }
 

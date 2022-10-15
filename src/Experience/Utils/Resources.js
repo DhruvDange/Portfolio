@@ -109,18 +109,12 @@ export default class Resources extends EventEmitter
         this.items[source.name] = file
         this.loaded++
 
-        this.loadPercent = (this.loaded / this.toLoad) * 100;
-        this.loadPercent = this.loadPercent.toFixed(0)
-        document.querySelector("#loading").style.width = `${this.loadPercent}%`
-
         if(this.loaded == this.toLoad)
         {
-
+            // full-screen
+            document.querySelector(".full-screen").style.display = 'none'
             document.querySelector(".Footer").style.display = 'block'
             document.querySelector(".Menu").style.display = 'block'
-            document.querySelector(".meter").style.display = 'none'
-            document.getElementsByTagName("body")[0].style.backgroundColor = "#ffffff";
-            document.getElementsByTagName("html")[0].style.backgroundColor = "#ffffff";
 
             this.trigger('ready')
         }
