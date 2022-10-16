@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <!-- Primary Meta Tags -->
     <title>Dhruv Dange - Full Stack Developer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="title" content="Dhruv Dange - Full Stack Developer" />
-    <meta name="description"
-        content="Hi! I'm Dhruv Dange. I am a Full-Stack Developer with interests in ThreeJs, Robotics, Computer Vision and a lot more!" />
+    <meta
+      name="description"
+      content="Hi! I'm Dhruv Dange. I am a Full-Stack Developer with interests in ThreeJs, Robotics, Computer Vision and a lot more!"
+    />
 
     <!-- ios settings -->
     <meta name="theme-color" content="#1a2c3c" />
@@ -16,173 +17,219 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://dhruvdange.com/" />
     <meta property="og:title" content="Dhruv Dange - Full Stack Developer" />
-    <meta property="og:description"
-        content="Hi! I'm Dhruv Dange. I am a Full-Stack Developer with interests in ThreeJs, Robotics, Computer Vision and a lot more!" />
-    <meta property="og:image" content="https://i.ibb.co/fGfZFPm/preview-1.png" />
+    <meta
+      property="og:description"
+      content="Hi! I'm Dhruv Dange. I am a Full-Stack Developer with interests in ThreeJs, Robotics, Computer Vision and a lot more!"
+    />
+    <meta
+      property="og:image"
+      content="https://i.ibb.co/fGfZFPm/preview-1.png"
+    />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://dhruvdange.com/" />
-    <meta property="twitter:title" content="Dhruv Dange - Full Stack Developer" />
-    <meta property="twitter:description"
-        content="Hi! I'm Dhruv Dange. I am a Full-Stack Developer with interests in ThreeJs, Robotics, Computer Vision and a lot more!" />
-    <meta property="twitter:image" content="https://i.ibb.co/fGfZFPm/preview-1.png" />
+    <meta
+      property="twitter:title"
+      content="Dhruv Dange - Full Stack Developer"
+    />
+    <meta
+      property="twitter:description"
+      content="Hi! I'm Dhruv Dange. I am a Full-Stack Developer with interests in ThreeJs, Robotics, Computer Vision and a lot more!"
+    />
+    <meta
+      property="twitter:image"
+      content="https://i.ibb.co/fGfZFPm/preview-1.png"
+    />
 
     <link rel="shortcut icon" href="/static/new/DD.ico" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H3Y53L4GB8"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-H3Y53L4GB8"
+    ></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag()
-        {
-            dataLayer.push(arguments);
-        }
-        gtag("js", new Date());
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-        gtag("config", "G-H3Y53L4GB8");
+      gtag("config", "G-H3Y53L4GB8");
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  </head>
 
-</head>
-
-<body>
-
-
+  <body>
     <div class="webgl"></div>
     <!-- animation.json -->
 
     <div class="full-screen">
-        <div class="animation-container">
-            <lottie-player src="animation.json" background="transparent"  speed="1"  style="width: 300px; height: 300px;" loop autoplay></lottie-player>
-        </div>
+      <div class="animation-container">
+        <lottie-player
+          src="animation.json"
+          background="transparent"
+          speed="1"
+          style="width: 300px; height: 300px"
+          loop
+          autoplay
+        ></lottie-player>
+      </div>
     </div>
 
     <div class="Menu">
-        <nav>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#works">Work</a>
-        </nav>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#works">Work</a>
+      </nav>
     </div>
 
     <p class="seot">
-        I'm a Full-Stack Developer with experience in the MERN Stack, Flutter,
-        IoT, Machine Learning and a lot more! I'm currently pursuing a Bachelor of
-        Engineering degree in Information Science at Ramaiah Institute of
-        Technology, Bangalore.
+      I'm a Full-Stack Developer with experience in the MERN Stack, Flutter,
+      IoT, Machine Learning and a lot more! I'm currently pursuing a Bachelor of
+      Engineering degree in Information Science at Ramaiah Institute of
+      Technology, Bangalore.
     </p>
 
     <div id="musicModal" class="musicModal">
-        <h2 class="modalHeading">Select a track to play</h2>
-        <div class="center">
-            <audio controls class="player"></audio>
-        </div>
+      <h2 class="modalHeading">Select a track to play</h2>
+      <div class="center">
+        <audio controls class="player"></audio>
+      </div>
 
-        <div class="track">
-            <div class="ib">
-                <img class="coverImg" src="/static/audio/images/biscuit.jpg" alt="Biscuit Coverart" />
-            </div>
-            <div class="ib">
-                <h2 class="trackName">Biscuit</h2>
-                <button id="biscuit" class="play button-8">Select track</button>
-                <h3 class="compName">~Lukrembo</h3>
-            </div>
+      <div class="track">
+        <div class="ib">
+          <img
+            class="coverImg"
+            src="/static/audio/images/biscuit.jpg"
+            alt="Biscuit Coverart"
+          />
         </div>
-
-        <div class="track">
-            <div class="ib">
-                <img class="coverImg" src="/static/audio/images/midnight.jpg" alt="Night Driving CoverArt" />
-            </div>
-            <div class="ib">
-                <h2 class="trackName">Night Driving</h2>
-                <button id="nightDriving" class="play button-8">Select track</button>
-                <h3 class="compName">~aquaCola</h3>
-            </div>
+        <div class="ib">
+          <h2 class="trackName">Biscuit</h2>
+          <button id="biscuit" class="play button-8">Select track</button>
+          <h3 class="compName">~Lukrembo</h3>
         </div>
+      </div>
 
-        <div class="track">
-            <div class="ib">
-                <img class="coverImg" src="/static/audio/images/retro.jpg" alt="Retro Funky Coverart" />
-            </div>
-            <div class="ib">
-                <h2 class="trackName">Retro Funky</h2>
-                <button id="retroFunky" class="play button-8">Select track</button>
-                <h3 class="compName">~SUNDANCEo</h3>
-            </div>
+      <div class="track">
+        <div class="ib">
+          <img
+            class="coverImg"
+            src="/static/audio/images/midnight.jpg"
+            alt="Night Driving CoverArt"
+          />
         </div>
-
-        <div class="track">
-            <div class="ib">
-                <img class="coverImg" src="/static/audio/images/start.jpg" alt="Lets Start Coverart" />
-            </div>
-            <div class="ib">
-                <h2 class="trackName">let's start!</h2>
-                <button id="letsStart" class="play button-8">Select track</button>
-                <h3 class="compName">~KUWAGO</h3>
-            </div>
+        <div class="ib">
+          <h2 class="trackName">Night Driving</h2>
+          <button id="nightDriving" class="play button-8">Select track</button>
+          <h3 class="compName">~aquaCola</h3>
         </div>
+      </div>
 
-        <div class="center">
-            <button id="remove-music" class="remove button-8">Stop Music</button>
-
-            <button id="hide-music" class="hide button-8">Hide Popup</button>
+      <div class="track">
+        <div class="ib">
+          <img
+            class="coverImg"
+            src="/static/audio/images/retro.jpg"
+            alt="Retro Funky Coverart"
+          />
         </div>
+        <div class="ib">
+          <h2 class="trackName">Retro Funky</h2>
+          <button id="retroFunky" class="play button-8">Select track</button>
+          <h3 class="compName">~SUNDANCEo</h3>
+        </div>
+      </div>
+
+      <div class="track">
+        <div class="ib">
+          <img
+            class="coverImg"
+            src="/static/audio/images/start.jpg"
+            alt="Lets Start Coverart"
+          />
+        </div>
+        <div class="ib">
+          <h2 class="trackName">let's start!</h2>
+          <button id="letsStart" class="play button-8">Select track</button>
+          <h3 class="compName">~KUWAGO</h3>
+        </div>
+      </div>
+
+      <div class="center">
+        <button id="remove-music" class="remove button-8">Stop Music</button>
+
+        <button id="hide-music" class="hide button-8">Hide Popup</button>
+      </div>
     </div>
 
     <!-- Can Click -->
 
     <div id="canModal" class="canModal">
-        <h2 class="modalHeading">Buy me a Drink!</h2>
-        <h3 class="modalSub-Heading3">
-            Staying up late coding is amazing! A can of my favourite drink makes it
-            just so much better.
-        </h3>
-        <h3 class="modalSub-Heading3">Support me by buying me a drink!</h3>
-        <div class="center">
-            <h3 class="modalSub-Heading2">Coke</h3>
-            <h4 class="modalSub-Heading4">INR 40</h4>
-            <form>
-                <script src="https://checkout.razorpay.com/v1/payment-button.js"
-                    data-payment_button_id="pl_IzX3ru7hbTFDhn" async></script>
-            </form>
-            <h3 class="modalSub-Heading2">RedBull</h3>
-            <h4 class="modalSub-Heading4">INR 110</h4>
-            <form>
-                <script src="https://checkout.razorpay.com/v1/payment-button.js"
-                    data-payment_button_id="pl_IzX6lyeZN4Lrnr" async></script>
-            </form>
-            <h3 class="modalSub-Heading2">Lychee Fanta</h3>
-            <h4 class="modalSub-Heading4">INR 120</h4>
-            <form>
-                <script src="https://checkout.razorpay.com/v1/payment-button.js"
-                    data-payment_button_id="pl_IzXAbb9q1EDtpb" async></script>
-            </form>
-        </div>
+      <!-- <h2 class="modalHeading"></h2> -->
+      <h3 class="modalSub-Heading3">
+        Staying up late coding is amazing! A can of my favourite drink makes it
+        just so much better.
+      </h3>
+      <h3 class="modalSub-Heading3">Support me by buying me a drink!</h3>
+      <div class="center">
+        <h3 class="modalSub-Heading2">Coke</h3>
+        <h4 class="modalSub-Heading4">INR 40</h4>
+        <form>
+          <script
+            src="https://checkout.razorpay.com/v1/payment-button.js"
+            data-payment_button_id="pl_IzX3ru7hbTFDhn"
+            async
+          ></script>
+        </form>
+        <h3 class="modalSub-Heading2">RedBull</h3>
+        <h4 class="modalSub-Heading4">INR 110</h4>
+        <form>
+          <script
+            src="https://checkout.razorpay.com/v1/payment-button.js"
+            data-payment_button_id="pl_IzX6lyeZN4Lrnr"
+            async
+          ></script>
+        </form>
+        <h3 class="modalSub-Heading2">Lychee Fanta</h3>
+        <h4 class="modalSub-Heading4">INR 120</h4>
+        <form>
+          <script
+            src="https://checkout.razorpay.com/v1/payment-button.js"
+            data-payment_button_id="pl_IzXAbb9q1EDtpb"
+            async
+          ></script>
+        </form>
+      </div>
 
-        <div class="center low">
-            <button id="hide-can" class="hide button-8">Hide Popup</button>
-        </div>
+      <div class="center low">
+        <button id="hide-can" class="hide button-8">Hide Popup</button>
+      </div>
     </div>
 
     <div class="Footer">
-        <ul>
-            <li><a href="mailto:dhruvdange@gmail.com" target="_blank">Email</a></li>
-            <li>
-                <a href="https://github.com/dhruvdange" target="_blank">GitHub</a>
-            </li>
-            <li>
-                <a href="https://www.linkedin.com/in/dhruv-dange/" target="_blank">Linkedin</a>
-            </li>
-            <li><a href="DhruvDange_resume.pdf" target="_blank">Resume</a></li>
-        </ul>
+      <ul>
+        <li><a href="mailto:dhruvdange@gmail.com" target="_blank">Email</a></li>
+        <li>
+          <a href="https://github.com/dhruvdange" target="_blank">GitHub</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/dhruv-dange/" target="_blank"
+            >Linkedin</a
+          >
+        </li>
+        <li><a href="DhruvDange_resume.pdf" target="_blank">Resume</a></li>
+      </ul>
     </div>
-</body>
-
+  </body>
 </html>
