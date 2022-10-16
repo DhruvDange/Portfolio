@@ -78,7 +78,7 @@ audio::-webkit-media-controls-volume-slider {
 .musicModal {
   width: 30vw;
   height: 70vh;
-  min-width: 400px;
+  min-width: 300px;
   max-width: 400px;
 
 
@@ -106,7 +106,7 @@ audio::-webkit-media-controls-volume-slider {
 .canModal {
   width: 30vw;
   height: 60vh;
-  min-width: 400px;
+  min-width: 300px;
   max-width: 400px;
 
 
@@ -130,6 +130,17 @@ audio::-webkit-media-controls-volume-slider {
   display: none;
   overflow-y: scroll;
 }
+
+
+@media only screen and (max-width: 500px) {
+    .canModal {
+      max-width: 300px;
+    }
+
+    .musicModal {
+        max-width: 300px;
+      }
+  }
 
 .seot{
     display: none;
@@ -201,6 +212,24 @@ audio::-webkit-media-controls-volume-slider {
   float: left;
   background: #555;
 }
+
+@media only screen and (max-width: 500px) {
+    .coverImg{
+        height: 8vh;
+    }
+
+    .trackName{
+        font-size: 1.5vh;
+    }
+
+    .button-8{
+        width: 10vh;
+    }
+
+    .compName{
+        font-size: 1.5vh;
+    }
+  }
 
 .trackName {
   padding: 0vh 2vh;
