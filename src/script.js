@@ -3,6 +3,7 @@ window.onbeforeunload = function () {
 };
 history.pushState("", document.title, window.location.pathname + window.location.search);
 
+
 import "./style.css";
 import Experience from "./Experience/Experience.js";
 
