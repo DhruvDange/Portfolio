@@ -66,6 +66,8 @@ export default class Room
     {
         // Static models of scene
         this.roomBase = this.model.children.find((child) => child.name === "base")
+        this.signMesh = this.model.children.find((child) => child.name === "sign")
+
         this.headphoneMesh = this.model.children.find((child) => child.name === "headphones")
         this.canMesh = this.model.children.find((child) => child.name === "can")
         this.emissionMesh = this.eModel.children.find((child) => child.name === "emission")
@@ -167,6 +169,9 @@ export default class Room
 
         // static color for fans
         this.bladeMaterial = new THREE.MeshBasicMaterial({ color:("#0077b6") })
+        this.signMaterial = new THREE.MeshBasicMaterial({ color:("#498AE3") })
+
+        //
 
         // assign materials
         this.emissionMesh.material = this.emissionMaterial
@@ -178,6 +183,7 @@ export default class Room
         this.arrow1Mesh.material = this.arrowMaterial
         this.arrow2Mesh.material = this.arrowMaterial
         this.projectsTextMesh.material = this.arrowMaterial
+        this.signMesh.material = this.signMaterial
     
     }
 
@@ -231,8 +237,9 @@ export default class Room
     }
 
     // Update colors on switch flip
-    updateColorHex(hex, postit, text, arrow)
+    updateColorHex(hex, postit, text, arrow, sign)
     {
+        this.signMesh.material.color.setHex(sign)
         this.roomBase.material.color.setHex(hex)
         this.headphoneMesh.material.color.setHex(hex)
         this.canMesh.material.color.setHex(hex)

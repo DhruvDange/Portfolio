@@ -155,7 +155,8 @@ export default class Raycaster extends EventEmitter
                     this.colorHex = 0x1a2c3c
                     this.postitColor = 0xe5b8ff
                     this.textColor = 0x1c1229
-                    this.room.updateColorHex(this.colorHex, this.postitColor, this.textColor, this.arrowHex)
+                    this.signColor = 0x498AE3
+                    this.room.updateColorHex(this.colorHex, this.postitColor, this.textColor, this.arrowHex, this.signColor)
                     this.switchOn = false
                 }
                 else // Make switch on i.e. Light color
@@ -167,7 +168,8 @@ export default class Raycaster extends EventEmitter
                     this.colorHex = 0xd6e9f5
                     this.postitColor = 0xffb703
                     this.textColor = 0x00163d
-                    this.room.updateColorHex(this.colorHex, this.postitColor, this.textColor, this.arrowHex)
+                    this.signColor = 0xffffff
+                    this.room.updateColorHex(this.colorHex, this.postitColor, this.textColor, this.arrowHex, this.signColor)
                     this.switchOn = true
                 }
             }
