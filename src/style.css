@@ -21,9 +21,6 @@ body {
         height: 500vh;
     }
 
-    .button-text {
-        font-size: 0.5rem;
-    }
 }
 
 audio {
@@ -150,7 +147,7 @@ audio::-webkit-media-controls-volume-slider {
 
     /* Styling */
     border-radius: 3%;
-    background-color: #004e648c;
+    background-color: #0058648c;
     backdrop-filter: saturate(180%) blur(10px);
     opacity: 0.98;
 
@@ -174,6 +171,11 @@ audio::-webkit-media-controls-volume-slider {
 
     .scroll-container{
         transform: translateX(-50%) translateY(40%);
+    }
+
+    .button-text {
+        font-size: 0.5rem;
+        margin-right: 5px;
     }
 
 }
