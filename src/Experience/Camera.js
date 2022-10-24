@@ -1,6 +1,6 @@
 import Experience from "./Experience";
 import * as THREE from "three"
-import {setOrbitControls} from 'three/examples/jsm/controls/OrbitControls'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
 export default class Camera
 {
@@ -36,16 +36,20 @@ export default class Camera
 
     setOrbitControls()
     {
-        // this.controls = new OrbitControls(this.instance, this.canvas);
-        // this.controls.target.set(-0.133, 0.545, -2);
-        // this.controls.enableDamping = true;
+        if (window.location.hash === '#debug')
+        {
+            this.controls = new OrbitControls(this.instance, this.canvas);
+            this.controls.target.set(0, 1, 0);
+            this.controls.enableDamping = true;
+        }
+
     }
 
     onScroll()
     {
         // Convert scroll values to a percentage
         this.hash = window.location.hash
-        if (this.hash !== "" && this.hash !== "debug")
+        if (this.hash !== "" && this.hash !== "#debug")
         {
             window.location.hash = ""
             this.hash = ""
@@ -67,12 +71,15 @@ export default class Camera
     }
 
     update()
-    {
+    {   
+        if(this.controls)
+            this.controls.update()
+
         if (!this.animation)
         {
             this.animations = this.experience.animations
         }
-        if(!this.scrollPercent && this.experience.time.elapsed > 5000)
+        if (!this.scrollPercent && this.experience.time.sinceReady > 5000)
         {
             this.scrollPercent = -1
             document.querySelector('.scroll-container').classList.add('show-scroll')

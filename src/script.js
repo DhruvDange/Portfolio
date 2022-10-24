@@ -1,6 +1,7 @@
 window.onbeforeunload = function () {
     window.scrollTo(0,0);
 };
+if (window.location.hash !== '#debug')
 history.pushState("", document.title, window.location.pathname + window.location.search);
 
 

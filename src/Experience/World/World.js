@@ -38,6 +38,7 @@ export default class World
             this.screen = new Screen()
             this.audioExperience = new AudioExperience()
 
+            this.experience.time.setReady()
             this.setEvent()
         })
 
