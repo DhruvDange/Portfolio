@@ -39,7 +39,10 @@ export default class Camera
         if (window.location.hash === '#debug')
         {
             this.controls = new OrbitControls(this.instance, this.canvas);
-            this.controls.target.set(0, 1, 0);
+            this.instance.position.set(-0.4, 1, 3)
+            this.scene.fog.far = 100
+            this.scene.fog.near = 0
+            this.controls.target.set(-0.4, 1, -3);
             this.controls.enableDamping = true;
         }
 
@@ -61,7 +64,9 @@ export default class Camera
         this.scrollPercent = this.scrollY / (this.docHeight - this.windowHeight) * 100
         this.scrollPercent = this.scrollPercent.toFixed(4)
         //this.scrollPercent = Math.round(this.scrollPercent * 100) / 100
-        this.setCameraPosition()
+
+        if(this.hash !== '#debug')
+            this.setCameraPosition()
     }
 
     resize()

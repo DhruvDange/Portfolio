@@ -7,6 +7,7 @@ import World from "./World/World.js"
 import Resources from "./Utils/Resources.js"
 import sources from "./sources.js"
 import Animations from "./CameraAnimations.js"
+import Debug from "./Utils/Debug.js"
 
 let instance = null
 
@@ -28,6 +29,7 @@ export default class Experience
         // this.debug = new Debug()
         this.sizes = new Sizes()
         this.time = new Time()
+        this.debug = new Debug()
         // Scenes
         this.scene = new THREE.Scene()
         this.scene.background = new THREE.Color(0x1a2c3c);

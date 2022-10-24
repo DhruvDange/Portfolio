@@ -25,7 +25,7 @@ export default class Room
         this.resources = this.experience.resources
         this.time = this.experience.time
         this.debug = this.experience.debug
-        
+
 
         // Setup
         this.resources = this.resources.items
@@ -38,12 +38,16 @@ export default class Room
         this.uAlpha = 0 // uAlpha for arrow and text
         this.mouseMesh = null // to move mouse in project scene
         this.showing = 0 // current project displayed
-        
+
         // screen size
         this.monitorGeometry = new THREE.PlaneBufferGeometry(0.55, 0.3)
 
-        window.addEventListener('mousemove', this.handleMouseMove , true)
+        window.addEventListener('mousemove', this.handleMouseMove, true)
 
+        if (this.debug.active)
+        {
+            this.debugFolder = this.debug.ui.addFolder('Lights')
+        }
 
         this.setModel()
         this.extractChildren()
@@ -87,7 +91,7 @@ export default class Room
 
         // set Switch to off position
         this.switchMesh.rotation.z -= 0.9
-        
+
         // fans -> dynamic
         this.blade1 = this.model.children.find((child) => child.name === "eBlade1");
         this.blade2 = this.model.children.find((child) => child.name === "eBlade2");
@@ -135,12 +139,13 @@ export default class Room
             uniforms: {
                 uAlpha: { value: 1 },
                 uTime: { value: 0 },
-                uColorStart: { value: new THREE.Color("#e0aaff") },
+                uColorStart: { value: new THREE.Color("#CFCFCF") },
                 uColorEnd: { value: new THREE.Color("#0077b6") },
             },
             fragmentShader: nanoLeafFragmentShader,
             vertexShader: nanoLeafVertexShader,
         })
+
 
         // all other emissions
         this.emissionMaterial = new THREE.ShaderMaterial({
@@ -152,7 +157,7 @@ export default class Room
             },
             fragmentShader: emissionFragmentShader,
             vertexShader: emissionVertexShader,
-            
+
         })
 
         // arrow and text for projects part
@@ -167,11 +172,27 @@ export default class Room
             vertexShader: arrowVertexShader
         })
 
-        // static color for fans
-        this.bladeMaterial = new THREE.MeshBasicMaterial({ color:("#0077b6") })
-        this.signMaterial = new THREE.MeshBasicMaterial({ color:("#498AE3") })
 
+
+        // static color for fans
+        this.bladeMaterial = new THREE.MeshBasicMaterial({ color: ("#0077b6") })
+        this.signMaterial = new THREE.MeshBasicMaterial({ color: ("#498AE3") })
         //
+
+        if (this.debugFolder)
+        {
+            this.debugFolder.addColor(this.nanoLeafMesh.material.uniforms.uColorStart, 'value').name('NanoLeaf uStart')
+            this.debugFolder.addColor(this.nanoLeafMesh.material.uniforms.uColorEnd, 'value').name('NanoLeaf uEnd')
+
+            this.debugFolder.addColor(this.emissionMaterial.uniforms.uColorStart, 'value').name('Emission uStart')
+            this.debugFolder.addColor(this.emissionMaterial.uniforms.uColorEnd, 'value').name('Emission uStart')
+
+            this.debugFolder.addColor(this.bladeMaterial, 'color').name('Fan color')
+            this.debugFolder.addColor(this.signMaterial, 'color').name('Sign color')
+
+            this.debugFolder.addColor(this.roomBase.material, 'color').name('Room color')
+
+        }
 
         // assign materials
         this.emissionMesh.material = this.emissionMaterial
@@ -184,7 +205,7 @@ export default class Room
         this.arrow2Mesh.material = this.arrowMaterial
         this.projectsTextMesh.material = this.arrowMaterial
         this.signMesh.material = this.signMaterial
-    
+
     }
 
     // set materials for other mesh
@@ -193,9 +214,9 @@ export default class Room
         // Materials for text and postit
         this.postitMaterial = new THREE.MeshBasicMaterial({ color: 0xe5b8ff })
         this.textMaterial = new THREE.MeshBasicMaterial({ color: 0x1c1229 })
-        
+
         // Give them individual materials for hover function
-        this.roomBase.material =  this.roomMaterial()
+        this.roomBase.material = this.roomMaterial()
         this.headphoneMesh.material = this.roomMaterial()
         this.canMesh.material = this.roomMaterial()
         this.switchPlateMesh.material = this.roomMaterial()
@@ -305,11 +326,11 @@ export default class Room
         this.projects[0].model = this.screenSaver
         this.setScreen()
     }
-    
+
     // set the sscene to display projects
     setProjectScene()
     {
-        if(this.sizes.width < 480)
+        if (this.sizes.width < 480)
         {
             this.arrow1Mesh.scale.set(0.25, 0.08, 0.1)
             this.arrow2Mesh.scale.set(0.25, 0.08, 0.1)
@@ -317,8 +338,8 @@ export default class Room
             this.arrow2Mesh.position.y -= 0.04
 
         }
-        gsap.to(this.arrowMaterial.uniforms.uAlpha, {duration: 0.5, value: 1})
-        for(let i = 1; i < this.projects.length; i++)
+        gsap.to(this.arrowMaterial.uniforms.uAlpha, { duration: 0.5, value: 1 })
+        for (let i = 1; i < this.projects.length; i++)
         {
             this.objectsToIntersect.push(this.projects[i].model)
         }
@@ -329,7 +350,8 @@ export default class Room
     nextScreen()
     {
         this.projects[this.showing++].model.position.z = -3
-        if(this.projects[this.showing] === undefined){
+        if (this.projects[this.showing] === undefined)
+        {
             this.showing = 1
         }
         this.projects[this.showing].model.position.z = -0.782
@@ -339,7 +361,8 @@ export default class Room
     prevScreen()
     {
         this.projects[this.showing--].model.position.z = -3
-        if(this.showing === 0){
+        if (this.showing === 0)
+        {
             this.showing = (this.projects.length) - 1
         }
         this.projects[this.showing].model.position.z = -0.782
@@ -348,8 +371,8 @@ export default class Room
     // Remove projects and display Screen Saver
     removeProjectScene()
     {
-        gsap.to(this.arrowMaterial.uniforms.uAlpha, {duration: 0.5, value: 0})
-        for(let i = 1; i < this.projects.length; i++)
+        gsap.to(this.arrowMaterial.uniforms.uAlpha, { duration: 0.5, value: 0 })
+        for (let i = 1; i < this.projects.length; i++)
         {
             this.projects[i].model.position.z = -3
             this.objectsToIntersect.pop(this.projects[i].model)
@@ -361,7 +384,7 @@ export default class Room
     // Create all project screens and hide until project part
     setScreen()
     {
-        for(let i = 1; i < this.projects.length; i++)
+        for (let i = 1; i < this.projects.length; i++)
         {
             this.projects[i].image = this.resources[this.projects[i].name]
             this.projects[i].image.flipY = true
