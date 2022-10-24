@@ -1,5 +1,6 @@
 import Experience from "./Experience";
 import * as THREE from "three"
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
 export default class Camera
 {
@@ -35,27 +36,37 @@ export default class Camera
 
     setOrbitControls()
     {
-        // this.controls = new OrbitControls(this.instance, this.canvas);
-        // this.controls.target.set(-0.133, 0.545, -2);
-        // this.controls.enableDamping = true;
+        if (window.location.hash === '#debug')
+        {
+            this.controls = new OrbitControls(this.instance, this.canvas);
+            this.instance.position.set(-0.4, 1, 3)
+            this.scene.fog.far = 100
+            this.scene.fog.near = 0
+            this.controls.target.set(-0.4, 1, -3);
+            this.controls.enableDamping = true;
+        }
+
     }
 
     onScroll()
     {
         // Convert scroll values to a percentage
         this.hash = window.location.hash
-        if(this.hash !== "")
+        if (this.hash !== "" && this.hash !== "#debug")
         {
             window.location.hash = ""
             this.hash = ""
         }
+        document.querySelector('.scroll-container').style.visibility = "hidden"
         this.scrollY = window.scrollY
         this.docHeight = document.body.offsetHeight
         this.windowHeight = this.sizes.height
         this.scrollPercent = this.scrollY / (this.docHeight - this.windowHeight) * 100
         this.scrollPercent = this.scrollPercent.toFixed(4)
         //this.scrollPercent = Math.round(this.scrollPercent * 100) / 100
-        this.setCameraPosition()
+
+        if(this.hash !== '#debug')
+            this.setCameraPosition()
     }
 
     resize()
@@ -65,10 +76,18 @@ export default class Camera
     }
 
     update()
-    {
-        if(!this.animation)
+    {   
+        if(this.controls)
+            this.controls.update()
+
+        if (!this.animation)
         {
             this.animations = this.experience.animations
+        }
+        if (!this.scrollPercent && this.experience.time.sinceReady > 5000)
+        {
+            this.scrollPercent = -1
+            document.querySelector('.scroll-container').classList.add('show-scroll')
         }
         if (window.location.hash === "#about")
         {
@@ -124,7 +143,7 @@ export default class Camera
             (this.currentScroll < this.scrollPercent)
         )
         {
-            if(this.sizes.width < 480)
+            if (this.sizes.width < 480)
             {
                 this.animations.animation1_mobile()
 
@@ -136,13 +155,13 @@ export default class Camera
             this.currentScroll = this.scrollPercent;
         }
 
-        
+
         if (
             (this.scrollPercent < this.currentScroll) &&
             (this.scrollPercent > 0 && this.scrollPercent < 25)
         )
         {
-            if(this.sizes.width < 480)
+            if (this.sizes.width < 480)
             {
                 this.animations.animation1Back()
 
@@ -153,19 +172,19 @@ export default class Camera
             }
             this.currentScroll = this.scrollPercent;
         }
-        
-        else if(this.scrollPercent > 25 && this.scrollPercent <= 50)
-        {          
+
+        else if (this.scrollPercent > 25 && this.scrollPercent <= 50)
+        {
 
             if (
                 (this.scrollPercent > 25 && this.scrollPercent < 50) &&
                 (this.currentScroll < this.scrollPercent)
             )
             {
-                if(this.sizes.width < 480)
+                if (this.sizes.width < 480)
                 {
                     this.animations.animation2_mobile()
-    
+
                 }
                 else
                 {
@@ -173,17 +192,17 @@ export default class Camera
                 }
                 this.currentScroll = this.scrollPercent;
             }
-    
-            
+
+
             if (
                 (this.scrollPercent < this.currentScroll) &&
                 (this.scrollPercent > 25 && this.scrollPercent < 50)
             )
             {
-                if(this.sizes.width < 480)
+                if (this.sizes.width < 480)
                 {
                     this.animations.animation1_mobile()
-    
+
                 }
                 else
                 {
@@ -193,19 +212,19 @@ export default class Camera
             }
 
         }
-        else if(this.scrollPercent > 50 && this.scrollPercent <= 70)
+        else if (this.scrollPercent > 50 && this.scrollPercent <= 70)
         {
-            
+
 
             if (
                 (this.scrollPercent > 50 && this.scrollPercent < 70) &&
                 (this.currentScroll < this.scrollPercent)
             )
             {
-                if(this.sizes.width < 480)
+                if (this.sizes.width < 480)
                 {
                     this.animations.animation3_mobile()
-    
+
                 }
                 else
                 {
@@ -213,17 +232,17 @@ export default class Camera
                 }
                 this.currentScroll = this.scrollPercent;
             }
-    
-            
+
+
             if (
                 (this.scrollPercent < this.currentScroll) &&
                 (this.scrollPercent > 50 && this.scrollPercent < 70)
             )
             {
-                if(this.sizes.width < 480)
+                if (this.sizes.width < 480)
                 {
                     this.animations.animation2_mobile()
-    
+
                 }
                 else
                 {
@@ -233,18 +252,18 @@ export default class Camera
             }
 
         }
-        else if(this.scrollPercent > 80 && this.scrollPercent <= 100)
-        {    
+        else if (this.scrollPercent > 80 && this.scrollPercent <= 100)
+        {
 
             if (
                 (this.scrollPercent > 80 && this.scrollPercent < 100) &&
                 (this.currentScroll < this.scrollPercent)
             )
             {
-                if(this.sizes.width < 480)
+                if (this.sizes.width < 480)
                 {
                     this.animations.animation4_mobile()
-    
+
                 }
                 else
                 {
@@ -252,17 +271,17 @@ export default class Camera
                 }
                 this.currentScroll = this.scrollPercent;
             }
-    
-            
+
+
             if (
                 (this.scrollPercent < this.currentScroll) &&
                 (this.scrollPercent > 80 && this.scrollPercent < 100)
             )
             {
-                if(this.sizes.width < 480)
+                if (this.sizes.width < 480)
                 {
                     this.animations.animation3_mobile()
-    
+
                 }
                 else
                 {

@@ -7,14 +7,16 @@ import World from "./World/World.js"
 import Resources from "./Utils/Resources.js"
 import sources from "./sources.js"
 import Animations from "./CameraAnimations.js"
+import Debug from "./Utils/Debug.js"
 
 let instance = null
 
-export default class Experience{
+export default class Experience
+{
 
     constructor(canvas)
     {
-        if(instance)
+        if (instance)
         {
             return instance
         }
@@ -27,16 +29,17 @@ export default class Experience{
         // this.debug = new Debug()
         this.sizes = new Sizes()
         this.time = new Time()
+        this.debug = new Debug()
         // Scenes
         this.scene = new THREE.Scene()
         this.scene.background = new THREE.Color(0x1a2c3c);
         this.scene.fog = new THREE.Fog(0x1a2c3c, 0.1, 1);
 
-        
+        this.setScrollAnimation()
         this.camera = new Camera()
         this.animations = new Animations()
         this.renderer = new Renderer()
-        this.resources = new Resources(sources) 
+        this.resources = new Resources(sources)
         this.world = new World()
 
         // Resize event listener
@@ -50,7 +53,35 @@ export default class Experience{
         {
             this.update()
         })
-    
+
+    }
+
+    setScrollAnimation()
+    {
+        let innerTxt
+        if (this.sizes.width > 480)
+        {
+            innerTxt = `<lottie-player
+            src="scroll.json"
+            background="transparent"
+            speed="1"
+            style="width: 60px; height: 60px"
+            loop
+            autoplay
+          ></lottie-player>`
+        }
+        else
+        {
+            innerTxt = `<lottie-player
+            src="swipe-up.json"
+            background="transparent"
+            speed="1"
+            style="width: 120px; height: 120px"
+            loop
+            autoplay
+          ></lottie-player>`
+        }
+        document.querySelector('.scroll-container').innerHTML = innerTxt
     }
 
     resize()

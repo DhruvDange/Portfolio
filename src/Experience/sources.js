@@ -10,7 +10,7 @@ export default [
         name: 'roomTexture',
         type: 'texture',
         path: [
-            'new/roomV8.jpg'
+            'new/roomV6.jpg'
         ]
     },
     {
@@ -24,7 +24,7 @@ export default [
         name: 'roomModel',
         type: 'gltfModel',
         path: [
-            'new/roomNew4.glb'
+            'new/roomNew5.glb'
         ]
     },
     {
