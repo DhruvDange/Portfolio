@@ -8,7 +8,6 @@ import Resources from "./Utils/Resources.js"
 import sources from "./sources.js"
 import Animations from "./CameraAnimations.js"
 import Debug from "./Utils/Debug.js"
-import RoomColors from "./World/RoomCOlor.js"
 
 let instance = null
 
