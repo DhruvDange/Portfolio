@@ -8,6 +8,7 @@ export default class Screen
 {
     constructor()
     {
+
         this.experience = new Experience()
         this.scene = this.experience.scene
         this.camera = this.experience.camera

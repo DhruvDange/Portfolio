@@ -1,6 +1,5 @@
 import Experience from "./Experience";
 import * as THREE from "three"
-import { VRButton } from 'three/examples/jsm/webxr/VRButton'
 
 export default class Renderer
 {
@@ -26,13 +25,11 @@ export default class Renderer
         {
             this.webGLRenderer = new THREE.WebGLRenderer({
                 antialias: true,
-                alpha: true
             });
         }
         else
         {
             this.webGLRenderer = new THREE.WebGLRenderer({
-                alpha: true
             });
         }
         this.webGLRenderer.localClippingEnabled = false
@@ -42,8 +39,6 @@ export default class Renderer
         this.webGLRenderer.setSize(this.sizes.width, this.sizes.height);
         this.webGLRenderer.setPixelRatio(this.sizes.pixelRatio);
 
-        this.webGLRenderer.xr.enabled = true
-        document.body.appendChild( VRButton.createButton(this.webGLRenderer) )
 
         this.canvas.appendChild(this.webGLRenderer.domElement)
         //document.body.appendChild(this.webGLRenderer.domElement)

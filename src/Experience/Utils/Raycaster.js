@@ -46,6 +46,10 @@ export default class Raycaster extends EventEmitter
         this.postitColor = 0xd4b0f9
         this.textColor = 0x2c2a4a
 
+        // this.colorHex = 0x1a2c3c 
+        // this.postitColor = 0xd4b0f9
+        // this.textColor = 0x2c2a4a
+
         this.setSounds()
         this.setInstance()
         this.setEvent()

@@ -18,6 +18,7 @@ export default class World
         this.resources = this.experience.resources
         this.renderer = this.experience.renderer
 
+
         // Wait for resources
         this.resources.on('ready', () => 
         {

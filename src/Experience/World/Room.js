@@ -319,7 +319,7 @@ export default class Room
         })
         screenSaverMaterial.depthWrite = false
         this.screenSaver = new THREE.Mesh(this.monitorGeometry, screenSaverMaterial)
-        this.screenSaver.position.set(-0.403, 0.748, -3)
+        this.screenSaver.position.set(-0.403, 0.748, 3)
         this.screenSaver.rotation.z = -Math.PI
         this.screenSaver.rotation.y = -Math.PI
         this.scene.add(this.screenSaver)
@@ -349,7 +349,7 @@ export default class Room
     // when arrow2 is clicked, goto next project
     nextScreen()
     {
-        this.projects[this.showing++].model.position.z = -3
+        this.projects[this.showing++].model.position.z = 3
         if (this.projects[this.showing] === undefined)
         {
             this.showing = 1
@@ -360,7 +360,7 @@ export default class Room
     // arrow1, show prev project
     prevScreen()
     {
-        this.projects[this.showing--].model.position.z = -3
+        this.projects[this.showing--].model.position.z = 3
         if (this.showing === 0)
         {
             this.showing = (this.projects.length) - 1
@@ -374,7 +374,7 @@ export default class Room
         gsap.to(this.arrowMaterial.uniforms.uAlpha, { duration: 0.5, value: 0 })
         for (let i = 1; i < this.projects.length; i++)
         {
-            this.projects[i].model.position.z = -3
+            this.projects[i].model.position.z = 3
             this.objectsToIntersect.pop(this.projects[i].model)
         }
         this.showing = 0
@@ -391,7 +391,7 @@ export default class Room
             this.projects[i].model = this.createScreen(this.projects[i].image)
             this.projects[i].model.name = this.projects[i].name
             this.projects[i].model.url = this.projects[i].href
-            this.projects[i].model.position.z = -3
+            this.projects[i].model.position.z = 3
             this.projects[i].model.rotation.z = -Math.PI
             this.projects[i].model.rotation.y = -Math.PI
             this.scene.add(this.projects[i].model)
