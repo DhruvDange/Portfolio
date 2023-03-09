@@ -8,6 +8,7 @@ import Resources from "./Utils/Resources.js"
 import sources from "./sources.js"
 import Animations from "./CameraAnimations.js"
 import Debug from "./Utils/Debug.js"
+import RoomColors from "./World/RoomCOlor.js"
 
 let instance = null
 
@@ -32,8 +33,8 @@ export default class Experience
         this.debug = new Debug()
         // Scenes
         this.scene = new THREE.Scene()
-        this.scene.background = new THREE.Color(0x1a2c3c);
-        this.scene.fog = new THREE.Fog(0x1a2c3c, 0.1, 1);
+        this.scene.background = new THREE.Color(0x3d5a80);
+        this.scene.fog = new THREE.Fog(0x1a2c3c, 0.5, 7);
 
         this.setScrollAnimation()
         this.camera = new Camera()
