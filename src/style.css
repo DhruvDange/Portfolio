@@ -61,7 +61,7 @@ audio::-webkit-media-controls-volume-slider {
 
 .scroll-container {
     position: absolute;
-    z-index: 100;
+    z-index: 5;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%) translateY(30%);
@@ -297,6 +297,7 @@ button {
     transform: rotate(-90deg) translateX(100%);
     transform-origin: bottom right;
     font-size: 14px;
+    z-index: 10;
 }
 
 .Footer li {
