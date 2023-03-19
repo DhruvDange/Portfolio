@@ -1,15 +1,4 @@
-window.onbeforeunload = function () {
-    window.scrollTo(0,0);
+window.onload = function () {
+  // similar behavior as clicking on a link
+  window.location.href = "https://zxbupj0y5ly.typeform.com/to/QXQYpTpO";
 };
-if (window.location.hash !== '#debug')
-history.pushState("", document.title, window.location.pathname + window.location.search);
-
-
-import "./style.css";
-import Experience from "./Experience/Experience.js";
-
-const canvas = document.querySelector('.webgl')
-
-
-
-const experience = new Experience(canvas)
