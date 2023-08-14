@@ -7,24 +7,59 @@ export default [
     //     ]
     // },
     {
-        name: 'roomTexture',
+        name: 'roomTexture1',
         type: 'texture',
         path: [
-            'new/roomV6.jpg'
+            'test/RoomBase1.jpg'
+        ]
+    },
+    {
+        name: 'roomTexture2',
+        type: 'texture',
+        path: [
+            'test/RoomItems1.jpg'
+        ]
+    },
+    {
+        name: 'roomTexture3',
+        type: 'texture',
+        path: [
+            'test/RoomItems2.jpg'
+        ]
+    },
+    {
+        name: 'projectsTexture',
+        type: 'texture',
+        path: [
+            'test/Projects.jpg'
         ]
     },
     {
         name: 'emissionModel',
         type: 'gltfModel',
         path: [
-            'new/DESK18.glb'
+            'test/Desk27_Baked.glb'
+        ]
+    },
+    {
+        name: 'projectsModel',
+        type: 'gltfModel',
+        path: [
+            'test/Desk30_Baked.glb'
+        ]
+    },
+    {
+        name: 'treasureModel',
+        type: 'gltfModel',
+        path: [
+            'test/Desk29_Baked.glb'
         ]
     },
     {
         name: 'roomModel',
         type: 'gltfModel',
         path: [
-            'new/roomNew5.glb'
+            'test/Desk26_Baked.glb'
         ]
     },
     {

@@ -31,6 +31,8 @@ export default class Room
         this.resources = this.resources.items
         this.roomModel = this.resources.roomModel // room GLTF file
         this.emissionModel = this.resources.emissionModel
+        this.projectsModel = this.resources.projectsModel
+        this.treasureModel = this.resources.treasureModel
 
         // Projects scene
         this.projects = projects // projects list
@@ -61,23 +63,35 @@ export default class Room
     {
         this.model = this.roomModel.scene
         this.eModel = this.emissionModel.scene
-        this.eModel.scale.set(0.1, 0.1, 0.1)
-        this.model.scale.set(0.1, 0.1, 0.1)
+        this.projectsModel = this.projectsModel.scene
+        this.treasureModel = this.treasureModel.scene
+        this.eModel.scale.set(0.04, 0.04, 0.04)
+        this.model.scale.set(0.04, 0.04, 0.04)
+        this.projectsModel.scale.set(0.04, 0.04, 0.04)
+        this.treasureModel.scale.set(0.04, 0.04, 0.04)
+
+        // add a point light
+        this.pointLight = new THREE.PointLight(0xffffff, 0.3)
+        this.pointLight.position.set(-0.3, 1.5, -0.5)
+        this.scene.add(this.pointLight)
+
     }
 
     // remove items from scene to update later
     extractChildren()
     {
         // Static models of scene
-        this.roomBase = this.model.children.find((child) => child.name === "base")
-        this.signMesh = this.model.children.find((child) => child.name === "sign")
+        this.roomBase = this.model.children.find((child) => child.name === "Base")
+        this.items1Mesh = this.model.children.find((child) => child.name === "RoomItems1")
+        this.items2Mesh = this.model.children.find((child) => child.name === "RoomItems2")
+
 
         this.headphoneMesh = this.model.children.find((child) => child.name === "headphones")
         this.canMesh = this.model.children.find((child) => child.name === "can")
         this.emissionMesh = this.eModel.children.find((child) => child.name === "emission")
-        this.nanoLeafMesh = this.eModel.children.find((child) => child.name === "nanoLights")
+        this.nanoLeafMesh = this.eModel.children.find((child) => child.name === "nanoLeafLights")
         this.postItMesh = this.model.children.find((child) => child.name === "postit")
-        this.textMesh = this.model.children.find((child) => child.name === "text")
+        this.textMesh = this.model.children.find((child) => child.name === "SkillsText")
         this.switchMesh = this.model.children.find((child) => child.name === "switch")
         this.switchPlateMesh = this.model.children.find((child) => child.name === "switchPlate")
         this.mouseMesh = this.model.children.find((child) => child.name === "mouseBody")
@@ -87,18 +101,28 @@ export default class Room
 
         this.arrow1Mesh = this.model.children.find((child) => child.name === "arrow1")
         this.arrow2Mesh = this.model.children.find((child) => child.name === "arrow2")
-        this.projectsTextMesh = this.model.children.find((child) => child.name === "projects")
+        this.workTextMesh = this.model.children.find((child) => child.name === "Work")
 
-        // set Switch to off position
-        this.switchMesh.rotation.z -= 0.9
+        this.skillsTextMesh = this.model.children.find((child) => child.name === "SkillsText")
+        this.projectsTextMesh = this.model.children.find((child) => child.name === "Projects")
+        this.skillsHTextMesh = this.model.children.find((child) => child.name === "Skills")
 
-        // fans -> dynamic
-        this.blade1 = this.model.children.find((child) => child.name === "eBlade1");
-        this.blade2 = this.model.children.find((child) => child.name === "eBlade2");
-        this.blade3 = this.model.children.find((child) => child.name === "eBlade3");
-        this.blade4 = this.model.children.find((child) => child.name === "eBlade4");
+        this.discord = this.projectsModel.children.find((child) => child.name === "Discord")
+        this.toddlert = this.projectsModel.children.find((child) => child.name === "Toddlert")
+        this.vision = this.projectsModel.children.find((child) => child.name === "Vision")
+        this.ppml = this.projectsModel.children.find((child) => child.name === "PPML")
+    
 
-        // for raycaster
+        // // set Switch to off position
+        // this.switchMesh.rotation.z -= 0.9
+
+        // // fans -> dynamic
+        this.blade1 = this.eModel.children.find((child) => child.name === "eBlade1");
+        this.blade2 = this.eModel.children.find((child) => child.name === "eBlade2");
+        this.blade3 = this.eModel.children.find((child) => child.name === "eBlade3");
+        this.blade4 = this.eModel.children.find((child) => child.name === "eBlade4");
+
+        // // for raycaster
         this.objectsToIntersect = [
             this.canMesh,
             this.headphoneMesh,
@@ -112,10 +136,20 @@ export default class Room
     // extract textures from loaded resources
     setTextures()
     {
-        this.texture = this.resources.roomTexture
-        this.texture.flipY = false
-        this.texture.generateMipmaps = true
-        this.texture.encoding = THREE.sRGBEncoding
+
+        this.textureBase = this.resources.roomTexture1
+        this.texture1 = this.resources.roomTexture2
+        this.texture2 = this.resources.roomTexture3
+        this.projectsTexture = this.resources.projectsTexture
+
+        const textures = [this.textureBase, this.texture1, this.texture2, this.projectsTexture]
+    
+        for(const texture of textures)
+        {
+            texture.flipY = false
+            texture.encoding = THREE.sRGBEncoding
+            texture.generateMipmaps = true
+        }
 
         this.screenTexture = this.resources.screen
     }
@@ -124,10 +158,24 @@ export default class Room
     roomMaterial()
     {
         return new THREE.MeshBasicMaterial({
-            color: 0x1a2c3c,
-            map: this.texture,
+            map: this.textureBase,
             side: THREE.DoubleSide,
-            opacity: 1,
+        });
+    }
+
+    roomMaterial2()
+    {
+        return new THREE.MeshBasicMaterial({
+            map: this.texture1,
+            side: THREE.DoubleSide,
+        });
+    }
+
+    roomMaterial3()
+    {
+        return new THREE.MeshBasicMaterial({
+            map: this.texture2,
+            side: THREE.DoubleSide,
         });
     }
 
@@ -176,7 +224,6 @@ export default class Room
 
         // static color for fans
         this.bladeMaterial = new THREE.MeshBasicMaterial({ color: ("#0077b6") })
-        this.signMaterial = new THREE.MeshBasicMaterial({ color: ("#498AE3") })
         //
 
         if (this.debugFolder)
@@ -188,7 +235,6 @@ export default class Room
             this.debugFolder.addColor(this.emissionMaterial.uniforms.uColorEnd, 'value').name('Emission uStart')
 
             this.debugFolder.addColor(this.bladeMaterial, 'color').name('Fan color')
-            this.debugFolder.addColor(this.signMaterial, 'color').name('Sign color')
 
             this.debugFolder.addColor(this.roomBase.material, 'color').name('Room color')
 
@@ -203,9 +249,25 @@ export default class Room
         this.blade4.material = this.bladeMaterial
         this.arrow1Mesh.material = this.arrowMaterial
         this.arrow2Mesh.material = this.arrowMaterial
-        this.projectsTextMesh.material = this.arrowMaterial
-        this.signMesh.material = this.signMaterial
+        this.workTextMesh.material = this.arrowMaterial
 
+    }
+
+    // assign material to sketchfab model
+    setSketchfabMaterial()
+    {
+        return new THREE.MeshBasicMaterial({ map: this.projectsTexture  })
+    }
+
+    setMeshSketchfab(obj3d)
+    {
+        obj3d.traverse((child) =>
+        {
+            if (child instanceof THREE.Mesh)
+            {
+                child.material = this.setSketchfabMaterial()
+            }
+        })
     }
 
     // set materials for other mesh
@@ -215,16 +277,26 @@ export default class Room
         this.postitMaterial = new THREE.MeshBasicMaterial({ color: 0xe5b8ff })
         this.textMaterial = new THREE.MeshBasicMaterial({ color: 0x1c1229 })
 
+        this.discord = this.setMeshSketchfab(this.discord)
+        this.toddlert = this.setMeshSketchfab(this.toddlert)
+        this.vision = this.setMeshSketchfab(this.vision)
+        this.ppml = this.setMeshSketchfab(this.ppml)
+
         // Give them individual materials for hover function
         this.roomBase.material = this.roomMaterial()
-        this.headphoneMesh.material = this.roomMaterial()
-        this.canMesh.material = this.roomMaterial()
-        this.switchPlateMesh.material = this.roomMaterial()
-        this.switchMesh.material = this.roomMaterial()
-        this.mouseMesh.material = this.roomMaterial()
+        this.items1Mesh.material = this.roomMaterial2()
+        this.items2Mesh.material = this.roomMaterial3()
+        this.headphoneMesh.material = this.roomMaterial2()
+        this.canMesh.material = this.roomMaterial2()
+        this.switchPlateMesh.material = this.roomMaterial3()
+        this.switchMesh.material = this.roomMaterial3()
+        this.mouseMesh.material = this.roomMaterial2()
 
         this.postItMesh.material = this.postitMaterial
         this.textMesh.material = this.textMaterial
+        this.skillsTextMesh.material = this.textMaterial
+        this.projectsTextMesh.material = this.textMaterial
+        this.skillsHTextMesh.material = this.textMaterial
 
         this.setEmissionMaterial()
         this.createScreenSaver() // create screen
@@ -254,22 +326,23 @@ export default class Room
     {
         this.scene.add(this.model)
         this.scene.add(this.eModel)
+        this.scene.add(this.projectsModel)
+        this.scene.add(this.treasureModel)
 
     }
 
     // Update colors on switch flip
     updateColorHex(hex, postit, text, arrow, sign)
     {
-        this.signMesh.material.color.setHex(sign)
-        this.roomBase.material.color.setHex(hex)
-        this.headphoneMesh.material.color.setHex(hex)
-        this.canMesh.material.color.setHex(hex)
-        this.switchPlateMesh.material.color.setHex(hex)
-        this.switchMesh.material.color.setHex(hex)
-        this.mouseMesh.material.color.setHex(hex)
-        this.arrowMaterial.uniforms.uColor.value = new THREE.Color(arrow)
-        this.postItMesh.material.color.setHex(postit)
-        this.textMesh.material.color.setHex(text)
+        // this.roomBase.material.color.setHex(hex)
+        // this.headphoneMesh.material.color.setHex(hex)
+        // this.canMesh.material.color.setHex(hex)
+        // this.switchPlateMesh.material.color.setHex(hex)
+        // this.switchMesh.material.color.setHex(hex)
+        // this.mouseMesh.material.color.setHex(hex)
+        // this.arrowMaterial.uniforms.uColor.value = new THREE.Color(arrow)
+        // this.postItMesh.material.color.setHex(postit)
+        // this.textMesh.material.color.setHex(text)
     }
 
     // update rotation and uTime
@@ -292,11 +365,11 @@ export default class Room
     // Handle mouse move in project part
     handleMouseMove(e)
     {
-        this.mouseMesh.position.z = -5.7 + ((e.clientY / window.outerHeight) - 0.5) * 0.5
-        this.eMouseMesh.position.z = -5.7 + ((e.clientY / window.outerHeight) - 0.5) * 0.5
+        this.mouseMesh.position.z = -14 + ((e.clientY / window.outerHeight) - 0.5) * 0.5
+        this.eMouseMesh.position.z = -14 + ((e.clientY / window.outerHeight) - 0.5) * 0.5
 
-        this.mouseMesh.position.x = -1.97 + ((e.clientX / window.outerWidth) - 0.5) * 0.7
-        this.eMouseMesh.position.x = -1.97 + ((e.clientX / window.outerWidth) - 0.5) * 0.7
+        this.mouseMesh.position.x = -4.97 + ((e.clientX / window.outerWidth) - 0.5) * 0.7
+        this.eMouseMesh.position.x = -4.97 + ((e.clientX / window.outerWidth) - 0.5) * 0.7
 
     }
 
