@@ -85,9 +85,9 @@ export default [
     },
     {
         name: 'wallpaper',
-        type: 'ktx2',
+        type: 'texture',
         path: [
-            'new/wallpaper.ktx2'
+            'new/wallpaper.jpg'
         ]
     },
     {

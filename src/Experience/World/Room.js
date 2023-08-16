@@ -423,8 +423,12 @@ export default class Room {
 
   // Create screensaver for when bodymovin destroyed
   createScreenSaver() {
+    const ss = this.resources.wallpaper
+    ss.flipY = false;
+    ss.encoding = THREE.sRGBEncoding;
+    ss.generateMipmaps = true;
     const screenSaverMaterial = new THREE.MeshBasicMaterial({
-      map: this.resources.wallpaper,
+      map: ss,
       side: THREE.DoubleSide,
     });
     screenSaverMaterial.depthWrite = false;
