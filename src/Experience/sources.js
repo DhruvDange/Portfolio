@@ -7,24 +7,52 @@ export default [
     //     ]
     // },
     {
-        name: 'roomTexture',
+        name: 'roomTexture1',
         type: 'texture',
         path: [
-            'new/roomV6.jpg'
+            'beta2/room_texture1.jpg'
+        ]
+    },
+    {
+        name: 'roomTexture2',
+        type: 'ktx2',
+        path: [
+            'beta2/room_texture2.ktx2'
+        ]
+    },
+    {
+        name: 'roomTexture3',
+        type: 'ktx2',
+        path: [
+            'beta2/room_texture3.ktx2'
+        ]
+    },
+    {
+        name: 'projectsTexture',
+        type: 'ktx2',
+        path: [
+            'beta2/projects_texture.ktx2'
         ]
     },
     {
         name: 'emissionModel',
         type: 'gltfModel',
         path: [
-            'new/DESK18.glb'
+            'beta2/emission_model.glb'
+        ]
+    },
+    {
+        name: 'projectsModel',
+        type: 'gltfModel',
+        path: [
+            'beta2/projects_model.glb'
         ]
     },
     {
         name: 'roomModel',
         type: 'gltfModel',
         path: [
-            'new/roomNew5.glb'
+            'beta2/room_model.glb'
         ]
     },
     {
@@ -57,9 +85,9 @@ export default [
     },
     {
         name: 'wallpaper',
-        type: 'ktx2',
+        type: 'texture',
         path: [
-            'new/wallpaper.ktx2'
+            'new/wallpaper.jpg'
         ]
     },
     {
