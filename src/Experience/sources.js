@@ -10,56 +10,49 @@ export default [
         name: 'roomTexture1',
         type: 'texture',
         path: [
-            'test/RoomBase1.jpg'
+            'beta2/room_texture1.jpg'
         ]
     },
     {
         name: 'roomTexture2',
-        type: 'texture',
+        type: 'ktx2',
         path: [
-            'test/RoomItems1.jpg'
+            'beta2/room_texture2.ktx2'
         ]
     },
     {
         name: 'roomTexture3',
-        type: 'texture',
+        type: 'ktx2',
         path: [
-            'test/RoomItems2.jpg'
+            'beta2/room_texture3.ktx2'
         ]
     },
     {
         name: 'projectsTexture',
-        type: 'texture',
+        type: 'ktx2',
         path: [
-            'test/Projects.jpg'
+            'beta2/projects_texture.ktx2'
         ]
     },
     {
         name: 'emissionModel',
         type: 'gltfModel',
         path: [
-            'test/Desk27_Baked.glb'
+            'beta2/emission_model.glb'
         ]
     },
     {
         name: 'projectsModel',
         type: 'gltfModel',
         path: [
-            'test/Desk30_Baked.glb'
-        ]
-    },
-    {
-        name: 'treasureModel',
-        type: 'gltfModel',
-        path: [
-            'test/Desk29_Baked.glb'
+            'beta2/projects_model.glb'
         ]
     },
     {
         name: 'roomModel',
         type: 'gltfModel',
         path: [
-            'test/Desk26_Baked.glb'
+            'beta2/room_model.glb'
         ]
     },
     {

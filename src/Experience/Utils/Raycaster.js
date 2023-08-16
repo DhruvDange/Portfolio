@@ -23,8 +23,8 @@ export default class Raycaster extends EventEmitter
         // Setup
         this.currentIntersect = null
         this.objectsToIntersect = objectsToIntersect
-        // this.lightSwitch = this.objectsToIntersect[2] // to flip the switch
-        // this.lightSwitch2 = this.objectsToIntersect[3]
+        this.lightSwitch = this.objectsToIntersect[2] // to flip the switch
+        this.lightSwitch2 = this.objectsToIntersect[3]
         this.switchOn = false // initially off
         this.exposure = 1
         this.musicModal = document.querySelector(".musicModal")
@@ -42,9 +42,9 @@ export default class Raycaster extends EventEmitter
 
 
         // dark color for room
-        // this.colorHex = 0x1a2c3c 
-        // this.postitColor = 0xd4b0f9
-        // this.textColor = 0x2c2a4a
+        this.colorHex = 0x1a2c3c 
+        this.postitColor = 0xd4b0f9
+        this.textColor = 0x2c2a4a
 
         // this.colorHex = 0x1a2c3c 
         // this.postitColor = 0xd4b0f9
@@ -130,96 +130,96 @@ export default class Raycaster extends EventEmitter
     clickObjects()
     {
      
-        // if(this.currentIntersect && !this.modalShowing)
-        // {
-        //     if(this.sizes.width > 480)
-        // {
-        //     this.pulseTime = 1200
-        // }
-        // else
-        // {
-        //     this.pulseTime = 300
-        // }
-        //     const switchIntersect =
-        //     this.currentIntersect.object.name === "switchPlate" ||
-        //     this.currentIntersect.object.name === "switch";
+        if(this.currentIntersect && !this.modalShowing)
+        {
+            if(this.sizes.width > 480)
+        {
+            this.pulseTime = 1200
+        }
+        else
+        {
+            this.pulseTime = 300
+        }
+            const switchIntersect =
+            this.currentIntersect.object.name === "switchPlate" ||
+            this.currentIntersect.object.name === "switch";
 
-        //     if(switchIntersect)
-        //     {
-        //         this.clickSound.volume = 0.5
-        //         this.clickSound.currentTime = 0
-        //         this.clickSound.play()
+            if(switchIntersect)
+            {
+                this.clickSound.volume = 0.5
+                this.clickSound.currentTime = 0
+                this.clickSound.play()
 
-        //         if(this.switchOn) // To make it off i.e navy blue
-        //         {
-        //             this.exposure = 1.0
-        //             this.lightSwitch.rotation.z -= 0.7
-        //             this.renderer.webGLRenderer.toneMappingExposure = this.exposure
-        //             this.arrowHex = 0x52b788
-        //             this.colorHex = 0x1a2c3c
-        //             this.postitColor = 0xe5b8ff
-        //             this.textColor = 0x1c1229
-        //             this.signColor = 0x498AE3
-        //             this.room.updateColorHex(this.colorHex, this.postitColor, this.textColor, this.arrowHex, this.signColor)
-        //             this.switchOn = false
-        //         }
-        //         else // Make switch on i.e. Light color
-        //         {
-        //             this.exposure = 0.8
-        //             this.lightSwitch.rotation.z += 0.7
-        //             this.renderer.webGLRenderer.toneMappingExposure = this.exposure
-        //             this.arrowHex = 0x01497c
-        //             this.colorHex = 0xd6e9f5
-        //             this.postitColor = 0xffb703
-        //             this.textColor = 0x00163d
-        //             this.signColor = 0xffffff
-        //             this.room.updateColorHex(this.colorHex, this.postitColor, this.textColor, this.arrowHex, this.signColor)
-        //             this.switchOn = true
-        //         }
-        //     }
-        //     else if(this.currentIntersect.object.name === 'arrow1')
-        //     {
-        //         this.room.prevScreen()
-        //     }
-        //     else if(this.currentIntersect.object.name === 'arrow2')
-        //     {
-        //         this.room.nextScreen()
-        //     }
-        //     else if(this.currentIntersect.object.name === 'headphones')
-        //     {
-        //         this.pulseTime = 800
-        //         if(!this.modalShowing)
-        //         {
-        //             this.musicModal.style.display = 'block';
-        //             this.modalShowing = true
-        //         }
-        //         else
-        //         {
-        //             this.musicModal.style.display = 'none';
-        //             this.modalShowing = false
-        //         }
-        //     }
-        //     else if(this.currentIntersect.object.name === 'can')
-        //     {
-        //         if(!this.modalShowing)
-        //         {
-        //             this.canModal.style.display = 'block';
-        //             this.modalShowing = true
-        //         }
-        //         else
-        //         {
-        //             this.canModal.style.display = 'none';
-        //             this.modalShowing = false
-        //         }
-        //     }
-        //     else
-        //     {
-        //         if(this.currentIntersect.object.url)
-        //         {
-        //             window.open(this.currentIntersect.object.url, '_blank');
-        //         }
-        //     }
-        // }
+                if(this.switchOn) // To make it off i.e navy blue
+                {
+                    this.exposure = 1.0
+                    this.lightSwitch.rotation.z -= 0.7
+                    this.renderer.webGLRenderer.toneMappingExposure = this.exposure
+                    this.arrowHex = 0x52b788
+                    this.colorHex = 0x1a2c3c
+                    this.postitColor = 0xe5b8ff
+                    this.textColor = 0x1c1229
+                    this.signColor = 0x498AE3
+                    this.room.updateColorHex(this.colorHex, this.postitColor, this.textColor, this.arrowHex, this.signColor)
+                    this.switchOn = false
+                }
+                else // Make switch on i.e. Light color
+                {
+                    this.exposure = 0.8
+                    this.lightSwitch.rotation.z += 0.7
+                    this.renderer.webGLRenderer.toneMappingExposure = this.exposure
+                    this.arrowHex = 0x01497c
+                    this.colorHex = 0xd6e9f5
+                    this.postitColor = 0xffb703
+                    this.textColor = 0x00163d
+                    this.signColor = 0xffffff
+                    this.room.updateColorHex(this.colorHex, this.postitColor, this.textColor, this.arrowHex, this.signColor)
+                    this.switchOn = true
+                }
+            }
+            else if(this.currentIntersect.object.name === 'arrow1')
+            {
+                this.room.prevScreen()
+            }
+            else if(this.currentIntersect.object.name === 'arrow2')
+            {
+                this.room.nextScreen()
+            }
+            else if(this.currentIntersect.object.name === 'headphones')
+            {
+                this.pulseTime = 800
+                if(!this.modalShowing)
+                {
+                    this.musicModal.style.display = 'block';
+                    this.modalShowing = true
+                }
+                else
+                {
+                    this.musicModal.style.display = 'none';
+                    this.modalShowing = false
+                }
+            }
+            else if(this.currentIntersect.object.name === 'can')
+            {
+                if(!this.modalShowing)
+                {
+                    this.canModal.style.display = 'block';
+                    this.modalShowing = true
+                }
+                else
+                {
+                    this.canModal.style.display = 'none';
+                    this.modalShowing = false
+                }
+            }
+            else
+            {
+                if(this.currentIntersect.object.url)
+                {
+                    window.open(this.currentIntersect.object.url, '_blank');
+                }
+            }
+        }
     }
 
 
