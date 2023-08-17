@@ -83,11 +83,18 @@ export default class Camera {
         this.animations.animation1_pc();
       }
       this.experience.world.screen.screenSwipe();
+    }else if (window.location.hash === "#projects") {
+      if (this.sizes.width < 480) {
+        this.animations.animation2_mobile();
+      } else {
+        this.animations.animation2_pc();
+      }
+      this.experience.world.screen.screenSwipe();
     } else if (window.location.hash === "#works") {
       if (this.sizes.width < 480) {
-        this.animations.animation3_mobile();
+        this.animations.animation4_mobile();
       } else {
-        this.animations.animation3_pc();
+        this.animations.animation4_pc();
       }
       this.experience.world.screen.screenSwipe();
     }
@@ -158,7 +165,8 @@ export default class Camera {
         }
         this.currentScroll = this.scrollPercent;
       }
-    } else if (this.scrollPercent > 50 && this.scrollPercent <= 70) {
+    } 
+    else if (this.scrollPercent > 50 && this.scrollPercent <= 70) {
       if (
         this.scrollPercent > 50 &&
         this.scrollPercent < 70 &&
@@ -184,10 +192,10 @@ export default class Camera {
         }
         this.currentScroll = this.scrollPercent;
       }
-    } else if (this.scrollPercent > 80 && this.scrollPercent <= 100) {
+    } else if (this.scrollPercent > 70 && this.scrollPercent <= 90) {
       if (
-        this.scrollPercent > 80 &&
-        this.scrollPercent < 100 &&
+        this.scrollPercent > 70 &&
+        this.scrollPercent < 90 &&
         this.currentScroll < this.scrollPercent
       ) {
         if (this.sizes.width < 480) {
@@ -200,13 +208,40 @@ export default class Camera {
 
       if (
         this.scrollPercent < this.currentScroll &&
-        this.scrollPercent > 80 &&
-        this.scrollPercent < 100
+        this.scrollPercent > 70 &&
+        this.scrollPercent < 90
       ) {
         if (this.sizes.width < 480) {
           this.animations.animation3_mobile();
         } else {
           this.animations.animation3_pc();
+        }
+        this.currentScroll = this.scrollPercent;
+      }
+    } else if(this.scrollPercent > 90 && this.scrollPercent <= 100)
+    {
+      if (
+        this.scrollPercent > 90 &&
+        this.scrollPercent < 100 &&
+        this.currentScroll < this.scrollPercent
+      ) {
+        if (this.sizes.width < 480) {
+          this.animations.animation5_mobile();
+        } else {
+          this.animations.animation5_pc();
+        }
+        this.currentScroll = this.scrollPercent;
+      }
+
+      if (
+        this.scrollPercent < this.currentScroll &&
+        this.scrollPercent > 90 &&
+        this.scrollPercent < 100
+      ) {
+        if (this.sizes.width < 480) {
+          this.animations.animation4_mobile();
+        } else {
+          this.animations.animation4_pc();
         }
         this.currentScroll = this.scrollPercent;
       }

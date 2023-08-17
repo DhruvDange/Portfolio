@@ -26,5 +26,8 @@
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.4.0",
     "webpack-merge": "^5.8.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.3"
   }
 }

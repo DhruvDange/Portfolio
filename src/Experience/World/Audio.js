@@ -68,9 +68,9 @@ export default class AudioExperience
             this.musicModal.style.display = 'none';
         })
 
-        this.hideCan.addEventListener('click', ()=> {
-            document.querySelector('#canModal').style.display = 'none';
-        })
+        // this.hideCan.addEventListener('click', ()=> {
+        //     document.querySelector('.canModal').style.display = 'none';
+        // })
 
         this.remove.addEventListener('click', ()=> {
             this.musicModal.style.display = 'none'
